@@ -39,10 +39,19 @@ class EnemyWeaponController:SKNode {
     
     // MARK: - Update
     func update(enemyController:EnemyController, delta: NSTimeInterval) {
+        
+        
+        //Move the weapons on screen
+        if self.movingWeapons {
+            for node in self.children {
+                if let weapon = node as? EnemyWeapon {
+                    weapon.update(delta: delta)
+                }
+            }
+        }
+        
         for (_, child) in enemyController.children.enumerate() {
             if let enemy = child as? Enemy {
-                print("enemy in controler x: "+String(enemy.position.x)+" y: "+String(enemy.position.y)+" screen width: "+String(kViewSize.width)+" y:"+String(kViewSize.height))
-                
                 // Is it time to fire the guns?
                 if self.firingWeapons {
                     self.frameCount += delta
@@ -53,15 +62,6 @@ class EnemyWeaponController:SKNode {
                             weapon.behaviors.spawn(weapon, enemy: enemy, controller: self)
                         }
                         self.frameCount = 0.0
-                    }
-                }
-                
-                //Move the meteors on screen
-                if self.movingWeapons {
-                    for node in self.children {
-                        if let weapon = node as? EnemyWeapon {
-                            weapon.update(delta: delta)
-                        }
                     }
                 }
             }

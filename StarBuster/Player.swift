@@ -132,10 +132,12 @@ class Player:SKSpriteNode {
             
             // Blink player
             self.blinkPlayer()
+            self.runAction(GameAudio.sharedInstance.soundShieldUp)
             // In 3 second remove action key for blink
             self.runAction(SKAction.waitForDuration(3.0), completion: {
                 self.immune = false
                 self.removeActionForKey("Blink")
+                self.runAction(GameAudio.sharedInstance.soundShieldDown)
             })
         }
     }

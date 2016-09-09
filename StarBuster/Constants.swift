@@ -30,6 +30,7 @@ class SpriteName {
     // Interface Names
     class var TitleGame:String      { return "GameTitle" }
     class var TitleGameShip:String  { return "GameTitleShip" }
+    class var TitleGamePlanet:String  { return "GameTitlePlanet" }
     class var TitleGameOver:String  { return "GameOverTitle" }
     
     // Player
@@ -60,6 +61,7 @@ class SpriteName {
     
     // Enemies 
     class var EnemyCruiser:String   { return "EnemyCruiser" }
+    class var EnemyDiveBomber:String     { return "EnemyDiveBomber" }
     
 }
 

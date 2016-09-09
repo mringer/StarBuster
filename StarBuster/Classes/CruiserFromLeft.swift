@@ -52,4 +52,8 @@ class CruiserFromLeft: EnemyBehaviors {
         
     }
     
+    func new() -> EnemyBehaviors {
+        return CruiserFromLeft()
+    }
+    
 }

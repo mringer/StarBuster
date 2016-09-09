@@ -17,12 +17,12 @@
     },
     {
       "idiom" : "ipad",
-      "filename" : "fighter-center-ipad@1x.png",
+      "filename" : "fighter-center@2x-1.png",
       "scale" : "1x"
     },
     {
       "idiom" : "ipad",
-      "filename" : "fighter-center-ipad@2x.png",
+      "filename" : "fighter-center@3x-1.png",
       "scale" : "2x"
     }
   ],

@@ -8,10 +8,10 @@
 
 import SpriteKit
 
-public class Meteor:SKSpriteNode {
+class Meteor:SKSpriteNode {
     
     // MARK: - Public enum
-    public enum MeteorType {
+    enum MeteorType {
         case Huge
         case Large
         case Medium
@@ -25,7 +25,7 @@ public class Meteor:SKSpriteNode {
     
     private var hitPoints = 1
     
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -110,7 +110,7 @@ public class Meteor:SKSpriteNode {
     }
     
     // Help NSCopying do its job
-    override public func copyWithZone(zone: NSZone) -> AnyObject {
+    override func copyWithZone(zone: NSZone) -> AnyObject {
         let copy = Meteor(type: meteorSize)
         return copy
     }

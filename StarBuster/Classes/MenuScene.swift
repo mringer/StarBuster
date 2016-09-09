@@ -14,7 +14,9 @@ class MenuScene:SKScene {
     //MARK: - Private class contant
     private let background = Background()
     private let gameTitle = GameTitle()
+    
     private let gameTitleShip = GameTitleShip()
+    private let gameTitlePlanet = GameTitlePlanet()
     private let playButton = PlayButton()
     
     //MARK: - Private class variable
@@ -31,6 +33,7 @@ class MenuScene:SKScene {
     
     override func didMoveToView(view: SKView) {
         self.setupMenuScrene()
+        GameAudio.sharedInstance.playBackgroundMusic(fileName: Music.Game)
     }
     
     //MARK: - Setup
@@ -38,16 +41,10 @@ class MenuScene:SKScene {
         //Set the background color to black
         self.backgroundColor = Colors.colorFromRGB(rgbValue: Colors.Background)
         self.addChild(self.background)
-        
-        //Initialize a temporary lable and add it to the scene
-//        self.sceneLabel.fontName = "ChalkDuster"
-//        self.sceneLabel.color = SKColor.whiteColor()
-//        self.sceneLabel.fontSize = kViewSize.width * 0.1
-//        self.sceneLabel.text = "Menu Scene"
-//        self.sceneLabel.position = CGPoint(x: kViewSize.width / 2, y: kViewSize.height / 2)
         self.addChild(self.playButton)
         self.addChild(self.gameTitle)
         self.addChild(self.gameTitleShip)
+        self.addChild(self.gameTitlePlanet)
     }
     
     //MARK: - Update

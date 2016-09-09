@@ -31,7 +31,7 @@ class StartButton:SKSpriteNode {
     
     //MARK: - Actions
     func tapped(){
-        
+        self.runAction(GameAudio.sharedInstance.soundButtonTap)
     }
     
     func fadeStartButton() {

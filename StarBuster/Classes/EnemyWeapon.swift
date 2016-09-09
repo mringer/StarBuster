@@ -71,11 +71,9 @@ class EnemyWeapon:SKSpriteNode {
     }
     
     func hitWeapon() {
-        let explosion = Explosion()
-        explosion.position = self.position
+        let explosion = Explosion(position: self.position)
         self.parent?.addChild(explosion)
         explosion.runAndExit()
-
         self.removeFromParent()
     }
     

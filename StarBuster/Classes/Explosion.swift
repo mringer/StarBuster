@@ -9,11 +9,11 @@
 
 import SpriteKit
 
-public class Explosion:SKSpriteNode {
+class Explosion:SKSpriteNode {
 
     private var explosionFrames = [SKTexture]()
     
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -21,7 +21,7 @@ public class Explosion:SKSpriteNode {
         super.init(texture: texture, color: color, size: size)
     }
     
-    convenience init() {
+    convenience init(position:CGPoint) {
         
         // TODO: magic string
         let animatedAtlas = SKTextureAtlas(named: "explosion")
@@ -37,15 +37,17 @@ public class Explosion:SKSpriteNode {
         let size = firstFrame.size()
         self.init(texture: firstFrame, color: SKColor.whiteColor(), size: size )
         self.explosionFrames = frames
+        self.position = position
     }
     
     func runAndExit() {
+        self.runAction(GameAudio.sharedInstance.soundExplosion) //, completion: {})
         self.runAction(
             SKAction.animateWithTextures(self.explosionFrames,
                 timePerFrame: 0.1,
                 resize: false,
                 restore: true),
-            completion: { self.removeFromParent()
-        })
+            completion: { self.removeFromParent() }
+        )
     }
 }

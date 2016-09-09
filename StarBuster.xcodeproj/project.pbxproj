@@ -43,6 +43,9 @@
 		1E38F87E1D5B8A7E00AEDA14 /* GameSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38F87D1D5B8A7E00AEDA14 /* GameSettings.swift */; };
 		1E38F8811D6105CB00AEDA14 /* Star.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38F8801D6105CB00AEDA14 /* Star.swift */; };
 		1E38F8831D61122600AEDA14 /* BonusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E38F8821D61122600AEDA14 /* BonusController.swift */; };
+		1E6913861D82039A008C78C6 /* GameTitlePlanet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6913851D82039A008C78C6 /* GameTitlePlanet.swift */; };
+		1E6913881D82112C008C78C6 /* DiveBomber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6913871D82112C008C78C6 /* DiveBomber.swift */; };
+		1E69138A1D832C46008C78C6 /* GameAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6913891D832C46008C78C6 /* GameAudio.swift */; };
 		1ED134901D4299E7002BC092 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1ED1348F1D4299E7002BC092 /* GameScene.sks */; };
 		1ED134971D4299E7002BC092 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ED134951D4299E7002BC092 /* Main.storyboard */; };
 		1ED134991D4299E7002BC092 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ED134981D4299E7002BC092 /* Assets.xcassets */; };
@@ -128,6 +131,9 @@
 		1E38F87D1D5B8A7E00AEDA14 /* GameSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSettings.swift; sourceTree = "<group>"; };
 		1E38F8801D6105CB00AEDA14 /* Star.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Star.swift; sourceTree = "<group>"; };
 		1E38F8821D61122600AEDA14 /* BonusController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonusController.swift; sourceTree = "<group>"; };
+		1E6913851D82039A008C78C6 /* GameTitlePlanet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTitlePlanet.swift; sourceTree = "<group>"; };
+		1E6913871D82112C008C78C6 /* DiveBomber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiveBomber.swift; sourceTree = "<group>"; };
+		1E6913891D832C46008C78C6 /* GameAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameAudio.swift; sourceTree = "<group>"; };
 		1ED1348A1D4299E5002BC092 /* StarBuster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarBuster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ED1348F1D4299E7002BC092 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		1ED134961D4299E7002BC092 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -214,6 +220,7 @@
 			children = (
 				1E0DCB9D1D78BF1E00C15765 /* CruiserFromRight.swift */,
 				1E0DCB9F1D78D72800C15765 /* CruiserFromLeft.swift */,
+				1E6913871D82112C008C78C6 /* DiveBomber.swift */,
 			);
 			name = Behaviors;
 			sourceTree = "<group>";
@@ -270,6 +277,7 @@
 				1E38F8431D51395600AEDA14 /* GameParticles.swift */,
 				1E38F8781D599C8A00AEDA14 /* GameFonts.swift */,
 				1E38F87D1D5B8A7E00AEDA14 /* GameSettings.swift */,
+				1E6913891D832C46008C78C6 /* GameAudio.swift */,
 			);
 			name = Singletons;
 			sourceTree = "<group>";
@@ -300,6 +308,7 @@
 				1E38F86C1D58483100AEDA14 /* GameTitleShip.swift */,
 				1E0F1A001D6C9153009E0ACA /* GameOverTitle.swift */,
 				1E0F1A021D6C9415009E0ACA /* ScoreBoard.swift */,
+				1E6913851D82039A008C78C6 /* GameTitlePlanet.swift */,
 			);
 			name = InterfaceNodes;
 			sourceTree = "<group>";
@@ -662,12 +671,14 @@
 				1E38F84C1D58368100AEDA14 /* StartButton.swift in Sources */,
 				1EF5475D1D50117D007C9060 /* GameOverScene.swift in Sources */,
 				1EF547591D42D16A007C9060 /* Constants.swift in Sources */,
+				1E69138A1D832C46008C78C6 /* GameAudio.swift in Sources */,
 				1E38F87E1D5B8A7E00AEDA14 /* GameSettings.swift in Sources */,
 				1E0DCBA51D795CFB00C15765 /* OneUp.swift in Sources */,
 				1E38F83E1D511D1B00AEDA14 /* GameTextures.swift in Sources */,
 				1E38F8721D58DAEB00AEDA14 /* Player.swift in Sources */,
 				1EF547481D42BFCC007C9060 /* SKAction+Extensions.swift in Sources */,
 				1E0DCBAB1D7984D900C15765 /* EnemyWeaponController.swift in Sources */,
+				1E6913861D82039A008C78C6 /* GameTitlePlanet.swift in Sources */,
 				1E38F8831D61122600AEDA14 /* BonusController.swift in Sources */,
 				1EF5474E1D42BFCC007C9060 /* Vector3.swift in Sources */,
 				1E0DCB9B1D7795AC00C15765 /* Enemy.swift in Sources */,
@@ -684,6 +695,7 @@
 				1EF547471D42BFCC007C9060 /* Int+Extensions.swift in Sources */,
 				1E0DCBA91D7984B900C15765 /* EnemyWeapon.swift in Sources */,
 				1E0DCB9E1D78BF1E00C15765 /* CruiserFromRight.swift in Sources */,
+				1E6913881D82112C008C78C6 /* DiveBomber.swift in Sources */,
 				1E38F87C1D5A50DB00AEDA14 /* StatusBar.swift in Sources */,
 				1E0DCB991D77647D00C15765 /* EnemyController.swift in Sources */,
 				1E38F86D1D58483100AEDA14 /* GameTitleShip.swift in Sources */,

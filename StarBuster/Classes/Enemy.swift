@@ -17,6 +17,8 @@ protocol EnemyBehaviors {
     func spawn(enemy:Enemy, parent:EnemyController)
     func update(enemy:Enemy, delta: NSTimeInterval)
     func destroy(enemy:Enemy)
+    
+    func new() -> EnemyBehaviors
 }
 
 class DefaultEnemyBehaviors:EnemyBehaviors {
@@ -32,9 +34,12 @@ class DefaultEnemyBehaviors:EnemyBehaviors {
     func spawn(enemy:Enemy, parent:EnemyController){}
     func update(enemy:Enemy, delta: NSTimeInterval){}
     func destroy(enemy:Enemy){}
+    func new() -> EnemyBehaviors {
+        return DefaultEnemyBehaviors()
+    }
 }
 
-public class Enemy:SKSpriteNode {
+class Enemy:SKSpriteNode {
     
     // MARK: - Enmy implementation
     var value:Int = 0
@@ -44,7 +49,7 @@ public class Enemy:SKSpriteNode {
     
     var behaviors:EnemyBehaviors = DefaultEnemyBehaviors()
     
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -78,12 +83,7 @@ public class Enemy:SKSpriteNode {
     
     // MARK: - Update
     func update(delta delta: NSTimeInterval) {
-        
-        //print("enemy x: "+String(self.position.x)+" y: "+String(self.position.y)+" screen width: "+String(kViewSize.width)+" y:"+String(kViewSize.height))
         self.behaviors.update(self, delta: delta)
-        //self.behaviors.weapons.update(self, delta: delta)
-        
-        
     }
     
     func hit(hit:Int, player: Player?) {
@@ -108,8 +108,9 @@ public class Enemy:SKSpriteNode {
     }
     
     // Help NSCopying do its job
-    public override func copyWithZone(zone: NSZone) -> AnyObject {
-        let copy = Enemy(behaviors: self.behaviors)
+    override func copyWithZone(zone: NSZone) -> AnyObject {
+        //var newBehavior =
+        let copy = Enemy(behaviors: self.behaviors.new())
         return copy
     }
     

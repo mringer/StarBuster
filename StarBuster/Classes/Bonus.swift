@@ -21,7 +21,7 @@ class DefaultBonusBehaviors:BonusBehaviors {
     func bonusPickedUpBy(player:Player, statusBar:StatusBar){}
 }
 
-public class Bonus:SKSpriteNode {
+class Bonus:SKSpriteNode {
     
     // MARK: - Public class properties
     internal var drift = CGFloat()
@@ -29,7 +29,7 @@ public class Bonus:SKSpriteNode {
     private var behaviors:BonusBehaviors = DefaultBonusBehaviors()
     
     // MARK: - Init
-    public required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
@@ -74,7 +74,7 @@ public class Bonus:SKSpriteNode {
     // MARK: - Action
     func pickedUpBy(player:Player, statusBar:StatusBar) {
         self.behaviors.bonusPickedUpBy(player, statusBar: statusBar)
-        self.removeFromParent()
+        self.runAction(GameAudio.sharedInstance.soundPickup, completion: { self.removeFromParent() })
     }
     
     func gameOver() {
@@ -82,7 +82,7 @@ public class Bonus:SKSpriteNode {
     }
     
     // Help NSCopying do its job
-    override public func copyWithZone(zone: NSZone) -> AnyObject {
+    override func copyWithZone(zone: NSZone) -> AnyObject {
         let copy = Bonus(behaviors: self.behaviors)
         return copy
     }

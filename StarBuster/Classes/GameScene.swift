@@ -21,7 +21,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private let enemyWeaponController = EnemyWeaponController()
     
     
-    private let enemyController = EnemyController(enemiesArray: [Enemy(behaviors: CruiserFromRight()), Enemy(behaviors: CruiserFromLeft())])
+    private let enemyController = EnemyController(enemiesArray: [Enemy(behaviors: CruiserFromRight()), Enemy(behaviors: CruiserFromLeft()), Enemy(behaviors: DiveBomber())])
+    
+    
+    //private let enemyController = EnemyController(enemiesArray: [Enemy(behaviors: DiveBomber())])
     
     private enum GameState:Int {
         case Tutorial

@@ -35,7 +35,6 @@ class Weapon:SKSpriteNode {
         case WeaponType.Laser:
             // TODO: - replace with a laser sprite
             size = CGSize(width: 2.0, height: 5.0)
-            
         }
         
         self.init(texture: nil, color: SKColor.redColor(), size: size)
@@ -69,11 +68,9 @@ class Weapon:SKSpriteNode {
     
     func hitWeapon() {
 
-        let explosion = Explosion()
-        explosion.position = self.position
+        let explosion = Explosion(position: self.position)
         self.parent?.addChild(explosion)
         explosion.runAndExit()
-        
         self.removeFromParent()
     }
     
