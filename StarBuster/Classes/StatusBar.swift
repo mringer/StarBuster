@@ -15,6 +15,10 @@ class StatusBar:SKNode {
     private var starsCollectedIcon = SKSpriteNode()
     private var starsCollectedLabel = SKLabelNode()
     
+    
+    // MARK: - Internal Class Constants
+    let pauseButton = PauseButton()
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -30,6 +34,7 @@ class StatusBar:SKNode {
         self.setupStatusBarScore(score)
         self.updateLives(lives: lives)
         self.setupStatusBarStarsCollected(collected: stars)
+        self.setupPauseButton()
     }
     
     //MARK: - Setup
@@ -87,6 +92,9 @@ class StatusBar:SKNode {
         self.statusBarBackground.addChild(self.starsCollectedLabel)
     }
     
+    private func setupPauseButton() {
+        self.addChild(self.pauseButton)
+    }
     
     // MARK: - Public Functions
     func updateScore(score score: Int) {
@@ -95,6 +103,9 @@ class StatusBar:SKNode {
     
     func updateStarsCollected(collected collected: Int) {
         self.starsCollectedLabel.text = String(collected)
+        self.starsCollectedIcon.runAction(self.animateBounce())
+        self.starsCollectedLabel.runAction(self.animateBounce())
+        self.scoreLabel.runAction(self.animateBounce())
     }
     
     func updateLives(lives lives: Int) {
@@ -141,4 +152,12 @@ class StatusBar:SKNode {
             self.statusBarBackground.addChild(livesLabel)
         }
     }
+    
+    func animateBounce() -> SKAction {
+        let scaleUp = SKAction.scaleTo(1.5, duration: 0.12)
+        let scaleNormal = SKAction.scaleTo(1.0, duration: 0.12)
+        let scaleSequence = SKAction.sequence([scaleUp, scaleNormal])
+        return scaleSequence
+    }
+
 }

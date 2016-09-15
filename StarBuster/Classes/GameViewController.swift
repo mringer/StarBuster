@@ -19,10 +19,10 @@ class GameViewController: UIViewController {
             if (skView.scene == nil){
                 if kDebug{
                     skView.showsFPS = true
+                    skView.showsPhysics = true // Show physics boundaries around sprites.
                 }
-                // Show physics boundaries around sprites.
-                skView.showsPhysics = false
-                skView.ignoresSiblingOrder = true
+                
+                skView.ignoresSiblingOrder = false
                 let menuScene = MenuScene(size: kViewSize)
                 let menuTransition = SKTransition.fadeWithColor(SKColor.blackColor(), duration: 0.25)
                 skView.presentScene(menuScene, transition: menuTransition)

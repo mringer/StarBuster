@@ -10,7 +10,7 @@ import Foundation
 import SpriteKit
 
 //MARK: - DEBUG
-let kDebug = true
+let kDebug = false
 
 //MARK: - Screen dimension convenience
 let kViewSize = UIScreen.mainScreen().bounds.size
@@ -26,6 +26,8 @@ class SpriteName {
     class var ButtonPlay:String     { return "PlayButton" }
     class var ButtonStart:String    { return "StartButton" }
     class var ButtonRetry:String    { return "RetryButton" }
+    class var ButtonPause:String    { return "PauseButton" }
+    class var ButtonResume:String   { return "ResumeButton" }
     
     // Interface Names
     class var TitleGame:String      { return "GameTitle" }
@@ -75,4 +77,23 @@ class Contact {
     class var EnemyWeapon:UInt32    { return 1 << 6 }
     class var Sheild:UInt32         { return 1 << 7 }
     
+}
+
+class GameLayer {
+    // Background Layers
+    class var BackgroundLow:CGFloat     { return 0 }
+    class var BackgroundMid:CGFloat     { return 0.1 }
+    class var BackgroundHigh:CGFloat    { return 0.2 }
+    // Meteors
+    class var Meteor:CGFloat            { return 1 }
+    // Enemies 
+    class var Enemy:CGFloat             { return 2 }
+    // Bonuses
+    class var Bonus:CGFloat             { return 3 }
+    // Player
+    class var Player:CGFloat            { return 4 }
+    // Interface
+    class var InterfaceLow:CGFloat      { return 5 }
+    class var InterfaceMid:CGFloat      { return 5.1 }
+    class var InterfaceHigh:CGFloat     { return 5.2 }
 }

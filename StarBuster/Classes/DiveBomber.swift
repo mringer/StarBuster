@@ -44,13 +44,9 @@ class DiveBomber: EnemyBehaviors {
         
         if lastChange > 1 {
             if  enemy.position.x > self.startX + maxDrift {
-                print("far right: " + String(velocity))
                 velocity = fabs(velocity) * -1
-                print("correction: " + String(velocity))
             } else if enemy.position.x < self.startX - maxDrift {
-                print("far left: " + String(velocity))
                 velocity = fabs(velocity)
-                print("correction: " + String(velocity))
             }
             lastChange = 0
         }

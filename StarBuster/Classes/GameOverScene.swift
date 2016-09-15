@@ -71,7 +71,7 @@ class GameOverScene:SKScene {
                 
             }
             
-            //self.loadMenuScene()
+            self.retryButton.tapped()
             self.loadGameScene()
         }
     }

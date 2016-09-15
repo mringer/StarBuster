@@ -45,7 +45,4 @@ class Background:SKNode{
         self.backgroundParticles.particleSpeed = self.backgroundStopSpeed
         self.backgroundParticles.particleSpeedRange = self.backgroundStopSpeed / 4
     }
-    
-    
-    
 }

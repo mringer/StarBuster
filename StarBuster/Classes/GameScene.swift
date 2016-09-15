@@ -38,6 +38,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var lastUpdateTime:NSTimeInterval = 0.0
     private var frameCount:NSTimeInterval = 0.0
     private var statusBar = StatusBar()
+    private var previousState = GameState.Tutorial
     
     //MARK: - Init
     required init?(coder aDecoder: NSCoder ){
@@ -49,6 +50,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func didMoveToView(view: SKView) {
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GameScene.pauseGame), name: "PauseGame", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GameScene.resumeGame), name: "ResumeGame", object: nil)
+        
         self.setupGameScene()
     }
     
@@ -158,6 +163,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                             enemyWeapon.hitWeapon() // don't update the player score...
                         }
                         
+                        self.flashBackground()
+                        self.shakeScreen()
+                        
                     } else {
                         return // Player is immune
                     }
@@ -212,11 +220,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         self.startButton.tapped()
                         self.switchToRunning()
                 }
+                
+                // TODO: just pause the game on app suspend.
+                if self.statusBar.pauseButton.containsPoint(touchLocation) {
+                    self.pauseButtonPressed()
+                }
+                
                 return
             case GameState.Running:
-                self.player.updateTargetLocation(newLocation: touchLocation)
+                if self.statusBar.pauseButton.containsPoint(touchLocation) {
+                    self.pauseButtonPressed()
+                } else {
+                    // Move the player ship to the touch location.
+                    self.player.updateTargetLocation(newLocation: touchLocation)
+                }
             case GameState.Paused:
-                return
+                if self.statusBar.pauseButton.containsPoint(touchLocation) {
+                    self.pauseButtonPressed()
+                }
             case GameState.GameOver:
                 return
         }
@@ -250,12 +271,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.bonusController.startSendingBonuses()
     }
     
+    //
     private func switchToPaused() {
+        self.previousState = self.state
         self.state = GameState.Paused
     }
     
     
-    private func switchToResume() {
+    @objc private func switchToResume() {
+        self.state = self.previousState
         self.state = GameState.Running
     }
     
@@ -283,5 +307,59 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private func updateDistanceTic() {
         self.player.updatePlayerScore(score: 1)
         self.statusBar.updateScore(score: self.player.score)
+    }
+    
+    func pauseGame() {
+        self.switchToPaused()
+    }
+    
+    func resumeGame() {
+        // Run a timer that resumes the game after 1 second
+        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(switchToResume), userInfo: nil, repeats: false)
+    }
+    
+    // MARK: - Pause Button Actions
+    private func pauseButtonPressed() {
+        self.statusBar.pauseButton.tapped()
+        
+        if self.statusBar.pauseButton.getPausedState() {
+            // Pause the gameNode
+            self.gameNode.paused = true
+            
+            // Set the state to Paused
+            self.switchToPaused()
+            
+            // pause the background music
+            GameAudio.sharedInstance.pausedBackgroundMusic()
+        } else {
+            // Resume the game
+            self.gameNode.paused = false
+            // Switch state to Running without doing the other in switchToResume()
+            self.switchToResume()
+            
+            // Resume the background music
+            GameAudio.sharedInstance.resumeBackgroundMusic()
+        }
+    }
+    
+    // MARK: - Scene Animation
+    func flashBackground() {
+        let colorFlash = SKAction.runBlock( {
+            self.backgroundColor = Colors.colorFromRGB(rgbValue: Colors.Magic)
+            self.runAction(SKAction.waitForDuration(0.25), completion: {
+                self.backgroundColor = Colors.colorFromRGB(rgbValue: Colors.Background)
+            })
+        })
+        self.runAction(colorFlash)
+    }
+    
+    func shakeScreen() {
+        let shake = SKAction.screenShakeWithNode(self.gameNode, amount: CGPoint(x:20, y:15), oscillations: 10, duration: 0.75)
+        self.runAction(shake)
+    }
+    
+    // MARK: - deinit
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 }

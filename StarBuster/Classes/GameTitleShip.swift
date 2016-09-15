@@ -10,6 +10,9 @@ import SpriteKit
 
 class GameTitleShip:SKSpriteNode{
     
+    // MARK: Private variables
+    private var animation = SKAction()
+    
     //MARK: - Init
     required init?(coder aDecoder: NSCoder){
         super.init(coder: aDecoder)

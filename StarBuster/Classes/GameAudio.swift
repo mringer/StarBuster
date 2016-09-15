@@ -29,6 +29,15 @@ let GameAudioSharedInstance = GameAudio()
 class GameAudio {
     
     class var sharedInstance:GameAudio {
+        
+        do {
+            // Audio Plays with other sources, and mutes on silent switch.
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategorySoloAmbient)
+        } catch {
+            if kDebug{
+                print(error)
+            }
+        }
         return GameAudioSharedInstance
     }
     

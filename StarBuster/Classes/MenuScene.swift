@@ -59,8 +59,8 @@ class MenuScene:SKScene {
         if self.playButton.containsPoint(touchLocation){
             if kDebug{
                 print("MenuScene: Loading Game Scene.")
-                
             }
+            self.playButton.tapped()
             self.loadGameScene()
         }
     }
