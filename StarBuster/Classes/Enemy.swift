@@ -13,11 +13,12 @@ protocol EnemyBehaviors {
     var value:Int                   {get}
     var hitPoints:Int               {get}
     var weapons:[EnemyWeapon]       {get}
-    //var weapons:EnemyWeaponController {get}
+    
     func spawn(enemy:Enemy, parent:EnemyController)
     func update(enemy:Enemy, delta: NSTimeInterval)
     func destroy(enemy:Enemy)
     
+    // Clone behavior for for dereferencing inside NSCopying copyWithZone
     func new() -> EnemyBehaviors
 }
 
@@ -26,7 +27,6 @@ class DefaultEnemyBehaviors:EnemyBehaviors {
     var value:Int                   = 0
     var hitPoints:Int               = 0
     var weapons:[EnemyWeapon] = [EnemyWeapon]()
-    
     init(){
     }
     
@@ -55,6 +55,7 @@ class Enemy:SKSpriteNode {
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size)
+        self.zPosition = GameLayer.Enemy
         self.setupEnemyPhysics()
     }
     

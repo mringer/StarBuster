@@ -19,6 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private let bonusController = BonusController()
     private let weaponController = WeaponController()
     private let enemyWeaponController = EnemyWeaponController()
+    private let gameMenu = GameMenu(frame: CGRect(x: 0, y: 0, width: 400, height: 35))
     
     
     private let enemyController = EnemyController(enemiesArray: [Enemy(behaviors: CruiserFromRight()), Enemy(behaviors: CruiserFromLeft()), Enemy(behaviors: DiveBomber())])
@@ -227,17 +228,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 }
                 
                 return
+            
             case GameState.Running:
                 if self.statusBar.pauseButton.containsPoint(touchLocation) {
                     self.pauseButtonPressed()
+                    return // TODO: -
                 } else {
                     // Move the player ship to the touch location.
                     self.player.updateTargetLocation(newLocation: touchLocation)
                 }
+            
             case GameState.Paused:
                 if self.statusBar.pauseButton.containsPoint(touchLocation) {
                     self.pauseButtonPressed()
+                    return
                 }
+            
             case GameState.GameOver:
                 return
         }
@@ -280,7 +286,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     @objc private func switchToResume() {
         self.state = self.previousState
-        self.state = GameState.Running
     }
     
     private func switchToGameOver() {
@@ -324,13 +329,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if self.statusBar.pauseButton.getPausedState() {
             // Pause the gameNode
-            self.gameNode.paused = true
+             self.gameNode.paused = true
             
             // Set the state to Paused
-            self.switchToPaused()
+             self.switchToPaused()
             
             // pause the background music
             GameAudio.sharedInstance.pausedBackgroundMusic()
+            
+            //Add the game menu
+            self.view?.addSubview(gameMenu)
+            
         } else {
             // Resume the game
             self.gameNode.paused = false
@@ -339,6 +348,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             // Resume the background music
             GameAudio.sharedInstance.resumeBackgroundMusic()
+            
+            // remove the game menu
+            gameMenu.removeFromSuperview()
         }
     }
     

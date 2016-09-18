@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1ED134A11D4299E7002BC092"
-               BuildableName = "StarBuster.xctest"
+               BuildableName = "StarBusterTests.xctest"
                BlueprintName = "StarBusterTests"
                ReferencedContainer = "container:StarBuster.xcodeproj">
             </BuildableReference>
@@ -45,6 +45,16 @@
                BlueprintIdentifier = "1ED134AC1D4299E7002BC092"
                BuildableName = "StarBuster.xctest"
                BlueprintName = "StarBusterUITests"
+               ReferencedContainer = "container:StarBuster.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1EE56F6D1D8DA63100A0D4FE"
+               BuildableName = "StarBusterTests2.xctest"
+               BlueprintName = "StarBusterTests2"
                ReferencedContainer = "container:StarBuster.xcodeproj">
             </BuildableReference>
          </TestableReference>

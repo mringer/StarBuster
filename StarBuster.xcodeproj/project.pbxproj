@@ -53,6 +53,12 @@
 		1ED134A71D4299E7002BC092 /* StarBusterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED134A61D4299E7002BC092 /* StarBusterTests.swift */; };
 		1ED134B21D4299E7002BC092 /* StarBusterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED134B11D4299E7002BC092 /* StarBusterUITests.swift */; };
 		1EE56F691D89AC2100A0D4FE /* SpriteAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE56F681D89AC2100A0D4FE /* SpriteAnimation.swift */; };
+		1EE56F791D8DAD8F00A0D4FE /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE56F781D8DAD8F00A0D4FE /* TestingAppDelegate.swift */; };
+		1EE56F7B1D8DADDB00A0D4FE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE56F7A1D8DADDB00A0D4FE /* main.swift */; };
+		1EE56F7F1D8DB9AF00A0D4FE /* GameMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE56F7E1D8DB9AF00A0D4FE /* GameMenu.swift */; };
+		1EE56F811D8DBE2500A0D4FE /* GameMenuActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE56F801D8DBE2500A0D4FE /* GameMenuActions.swift */; };
+		1EE56F831D8DD79B00A0D4FE /* LiveDebugLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE56F821D8DD79B00A0D4FE /* LiveDebugLog.swift */; };
+		1EE56F851D8DD95000A0D4FE /* GameMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1EE56F841D8DD95000A0D4FE /* GameMenu.xib */; };
 		1EF547281D42BF6F007C9060 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF547251D42BF6F007C9060 /* AppDelegate.swift */; };
 		1EF547291D42BF6F007C9060 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF547261D42BF6F007C9060 /* GameScene.swift */; };
 		1EF5472A1D42BF6F007C9060 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF547271D42BF6F007C9060 /* GameViewController.swift */; };
@@ -142,13 +148,19 @@
 		1ED134961D4299E7002BC092 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1ED134981D4299E7002BC092 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1ED1349D1D4299E7002BC092 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1ED134A21D4299E7002BC092 /* StarBuster.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarBuster.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1ED134A21D4299E7002BC092 /* StarBusterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarBusterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ED134A61D4299E7002BC092 /* StarBusterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarBusterTests.swift; sourceTree = "<group>"; };
 		1ED134A81D4299E7002BC092 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1ED134AD1D4299E7002BC092 /* StarBuster.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarBuster.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ED134B11D4299E7002BC092 /* StarBusterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarBusterUITests.swift; sourceTree = "<group>"; };
 		1ED134B31D4299E7002BC092 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1EE56F681D89AC2100A0D4FE /* SpriteAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteAnimation.swift; sourceTree = "<group>"; };
+		1EE56F781D8DAD8F00A0D4FE /* TestingAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
+		1EE56F7A1D8DADDB00A0D4FE /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		1EE56F7E1D8DB9AF00A0D4FE /* GameMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMenu.swift; sourceTree = "<group>"; };
+		1EE56F801D8DBE2500A0D4FE /* GameMenuActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMenuActions.swift; sourceTree = "<group>"; };
+		1EE56F821D8DD79B00A0D4FE /* LiveDebugLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveDebugLog.swift; sourceTree = "<group>"; };
+		1EE56F841D8DD95000A0D4FE /* GameMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameMenu.xib; sourceTree = "<group>"; };
 		1EF547251D42BF6F007C9060 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1EF547261D42BF6F007C9060 /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		1EF547271D42BF6F007C9060 /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -315,6 +327,8 @@
 				1E0F1A001D6C9153009E0ACA /* GameOverTitle.swift */,
 				1E0F1A021D6C9415009E0ACA /* ScoreBoard.swift */,
 				1E6913851D82039A008C78C6 /* GameTitlePlanet.swift */,
+				1EE56F7E1D8DB9AF00A0D4FE /* GameMenu.swift */,
+				1EE56F801D8DBE2500A0D4FE /* GameMenuActions.swift */,
 			);
 			name = InterfaceNodes;
 			sourceTree = "<group>";
@@ -370,7 +384,7 @@
 			isa = PBXGroup;
 			children = (
 				1ED1348A1D4299E5002BC092 /* StarBuster.app */,
-				1ED134A21D4299E7002BC092 /* StarBuster.xctest */,
+				1ED134A21D4299E7002BC092 /* StarBusterTests.xctest */,
 				1ED134AD1D4299E7002BC092 /* StarBuster.xctest */,
 			);
 			name = Products;
@@ -437,6 +451,7 @@
 				1EF5472E1D42BFCC007C9060 /* Library */,
 				1EF5473B1D42BFCC007C9060 /* Music */,
 				1EF5473D1D42BFCC007C9060 /* Sounds */,
+				1EE56F841D8DD95000A0D4FE /* GameMenu.xib */,
 			);
 			path = GameResources;
 			sourceTree = "<group>";
@@ -453,6 +468,7 @@
 			isa = PBXGroup;
 			children = (
 				1EF5472F1D42BFCC007C9060 /* SKTUtils */,
+				1EE56F821D8DD79B00A0D4FE /* LiveDebugLog.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -500,6 +516,8 @@
 			children = (
 				1EF547271D42BF6F007C9060 /* GameViewController.swift */,
 				1EF547251D42BF6F007C9060 /* AppDelegate.swift */,
+				1EE56F781D8DAD8F00A0D4FE /* TestingAppDelegate.swift */,
+				1EE56F7A1D8DADDB00A0D4FE /* main.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -559,7 +577,7 @@
 			);
 			name = StarBusterTests;
 			productName = SpaceRunnerTests;
-			productReference = 1ED134A21D4299E7002BC092 /* StarBuster.xctest */;
+			productReference = 1ED134A21D4299E7002BC092 /* StarBusterTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		1ED134AC1D4299E7002BC092 /* StarBusterUITests */ = {
@@ -637,6 +655,7 @@
 				1EF5474F1D42BFCC007C9060 /* GameMusic.mp3 in Resources */,
 				1EF547501D42BFCC007C9060 /* ButtonTap.caf in Resources */,
 				1EF547531D42BFCC007C9060 /* ShieldDown.caf in Resources */,
+				1EE56F851D8DD95000A0D4FE /* GameMenu.xib in Resources */,
 				1ED134991D4299E7002BC092 /* Assets.xcassets in Resources */,
 				1EF547511D42BFCC007C9060 /* Explosion.caf in Resources */,
 				1ED134971D4299E7002BC092 /* Main.storyboard in Resources */,
@@ -680,11 +699,13 @@
 				1EF5475D1D50117D007C9060 /* GameOverScene.swift in Sources */,
 				1EF547591D42D16A007C9060 /* Constants.swift in Sources */,
 				1E69138A1D832C46008C78C6 /* GameAudio.swift in Sources */,
+				1EE56F7F1D8DB9AF00A0D4FE /* GameMenu.swift in Sources */,
 				1E38F87E1D5B8A7E00AEDA14 /* GameSettings.swift in Sources */,
 				1E0DCBA51D795CFB00C15765 /* OneUp.swift in Sources */,
 				1E38F83E1D511D1B00AEDA14 /* GameTextures.swift in Sources */,
 				1E38F8721D58DAEB00AEDA14 /* Player.swift in Sources */,
 				1EF547481D42BFCC007C9060 /* SKAction+Extensions.swift in Sources */,
+				1EE56F791D8DAD8F00A0D4FE /* TestingAppDelegate.swift in Sources */,
 				1E0DCBAB1D7984D900C15765 /* EnemyWeaponController.swift in Sources */,
 				1E6913861D82039A008C78C6 /* GameTitlePlanet.swift in Sources */,
 				1E38F8831D61122600AEDA14 /* BonusController.swift in Sources */,
@@ -694,11 +715,13 @@
 				1E38F8791D599C8A00AEDA14 /* GameFonts.swift in Sources */,
 				1E0F1A061D6F881E009E0ACA /* Weapon.swift in Sources */,
 				1EF5474A1D42BFCC007C9060 /* SKColor+Extensions.swift in Sources */,
+				1EE56F7B1D8DADDB00A0D4FE /* main.swift in Sources */,
 				1E38F8471D5179B300AEDA14 /* Background.swift in Sources */,
 				1EF5472A1D42BF6F007C9060 /* GameViewController.swift in Sources */,
 				1E0DCB941D76D54600C15765 /* Explosion.swift in Sources */,
 				1E38F8401D512FBB00AEDA14 /* Colors.swift in Sources */,
 				1E38F8701D58D53700AEDA14 /* TouchCircle.swift in Sources */,
+				1EE56F831D8DD79B00A0D4FE /* LiveDebugLog.swift in Sources */,
 				1E0F1A0A1D74A561009E0ACA /* Bonus.swift in Sources */,
 				1EF547471D42BFCC007C9060 /* Int+Extensions.swift in Sources */,
 				1E0DCBA91D7984B900C15765 /* EnemyWeapon.swift in Sources */,
@@ -709,6 +732,7 @@
 				1E38F86D1D58483100AEDA14 /* GameTitleShip.swift in Sources */,
 				1E38F8441D51395700AEDA14 /* GameParticles.swift in Sources */,
 				1E38F8771D59605B00AEDA14 /* MeteorController.swift in Sources */,
+				1EE56F811D8DBE2500A0D4FE /* GameMenuActions.swift in Sources */,
 				1EF5474D1D42BFCC007C9060 /* SKTTimingFunctions.swift in Sources */,
 				1E38F8751D59194B00AEDA14 /* Meteor.swift in Sources */,
 				1E0F1A031D6C9415009E0ACA /* ScoreBoard.swift in Sources */,
@@ -887,10 +911,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				INFOPLIST_FILE = StarBusterTests/Info.plist;
+				INFOPLIST_FILE = StarBuster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewringer.StarBusterTests;
-				PRODUCT_NAME = StarBuster;
+				PRODUCT_NAME = StarBusterTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StarBuster.app/StarBuster";
 			};
 			name = Debug;
@@ -899,10 +923,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = StarBusterTests/Info.plist;
+				INFOPLIST_FILE = StarBuster/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewringer.StarBusterTests;
-				PRODUCT_NAME = StarBuster;
+				PRODUCT_NAME = StarBusterTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StarBuster.app/StarBuster";
 			};
 			name = Release;

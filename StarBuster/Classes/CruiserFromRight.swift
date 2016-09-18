@@ -14,7 +14,6 @@ class CruiserFromRight: EnemyBehaviors {
     var value:Int
     var hitPoints:Int
     var weapons = [EnemyWeapon(behaviors: EnemyLaser())]
-
     
     init() {
         self.texture = GameTextures.sharedInstance.textureWithName( name: SpriteName.EnemyCruiser )

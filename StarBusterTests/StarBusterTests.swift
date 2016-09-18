@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import SpaceRunner
+@testable import StarBuster
 
 class StarBusterTests: XCTestCase {
     
@@ -21,9 +21,14 @@ class StarBusterTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testEnemy_init_state() {
+        // Arrange
+        let enemy:Enemy = Enemy()
+        
+        // Act
+        
+        // Assert
+        XCTAssertEqual(enemy.zPosition, GameLayer.Enemy)
     }
     
     func testPerformanceExample() {

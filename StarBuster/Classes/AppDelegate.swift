@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 import AVFoundation
 
-@UIApplicationMain
+//@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?

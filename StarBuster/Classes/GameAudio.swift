@@ -43,6 +43,7 @@ class GameAudio {
     
     // MARK: - Private class variables
     private var musicPlayer = AVAudioPlayer()
+    private var cachedVolume:Float = 0
     
     // MARK: - Private class constants 
     internal let soundShieldUp = SKAction.playSoundFileNamed(SoundEffects.ShieldUp, waitForCompletion: false)
@@ -72,6 +73,15 @@ class GameAudio {
         self.musicPlayer.play()
         
         self.initialized = true
+    }
+    
+    func toggleMuteBackGroundMusic() {
+        if(self.musicPlayer.volume != 0) {
+            self.cachedVolume = self.musicPlayer.volume
+            self.musicPlayer.volume = 0
+        } else {
+            self.musicPlayer.volume = self.cachedVolume
+        }
     }
     
     func stopBackgroundMusic() {
