@@ -19,13 +19,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     fileprivate let bonusController = BonusController()
     fileprivate let weaponController = WeaponController()
     fileprivate let enemyWeaponController = EnemyWeaponController()
+    
+    // TODO: Fix dimensions
     fileprivate let gameMenu = GameMenu(frame: CGRect(x: 0, y: 0, width: 400, height: 35))
     
     
-    fileprivate let enemyController = EnemyController(enemiesArray: [Enemy(behaviors: CruiserFromRight()), Enemy(behaviors: CruiserFromLeft()), Enemy(behaviors: DiveBomber())])
+    //fileprivate let enemyController = EnemyController(enemiesArray: [Enemy(behaviors: CruiserFromRight()), Enemy(behaviors: CruiserFromLeft())]) // , Enemy(behaviors: DiveBomber())])
     
     
-    //private let enemyController = EnemyController(enemiesArray: [Enemy(behaviors: DiveBomber())])
+    fileprivate let enemyController = EnemyController(enemiesArray: [ Enemy(behaviors: DiveBomber())])
     
     fileprivate enum GameState:Int {
         case tutorial
@@ -268,13 +270,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Move player to start position
         self.player.updateTargetLocation(newLocation: self.startButton.position)
         self.startButton.fadeStartButton()
-        self.background.startBackground()
-        self.meteorController.startSendingMeteors()
-        self.weaponController.startFiringWeapons()
-        self.enemyController.startSendingEnemies()
-        self.enemyWeaponController.startFiringWeapons()
+        self.background.setBackgroundOn(true)
+        //self.meteorController.setMeteorsOn(true)
+        self.weaponController.setWeaponsOn(true)
+        self.enemyController.setEnemiesOn(true)
+        //self.enemyWeaponController.setWeaponsOn(true)
         // Start sending stars
-        self.bonusController.startSendingBonuses()
+        //self.bonusController.setBonusesOn(true)
     }
     
     //
@@ -298,12 +300,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.player.gameOver()
         
         // Stop background
-        self.background.stopBackground()
-        self.meteorController.stopSendingMeteors()
-        self.bonusController.stopSendingBonuses()
-        self.weaponController.stopFiringWeapons()
-        self.enemyController.stopSendingEnemies()
-        self.enemyWeaponController.stopFiringWeapons()
+        self.background.setBackgroundOn(false)
+        self.meteorController.setMeteorsOn(false)
+        self.bonusController.setBonusesOn(false)
+        self.weaponController.setWeaponsOn(false)
+        self.enemyController.setEnemiesOn(false)
+        self.enemyWeaponController.setWeaponsOn(false)
         // Switch to game over scene after 1.5 seconds
         self.run(SKAction.wait(forDuration: 1.5), completion: { self.loadGameOverScene() })
     }

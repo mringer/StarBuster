@@ -20,6 +20,7 @@ class DiveBomber: EnemyBehaviors {
     fileprivate var lastChange:TimeInterval = 0
     
     init() {
+        //self.texture = GameTextures.sharedInstance.textureWithName( name: SpriteName.EnemyCruiser )
         self.texture = GameTextures.sharedInstance.textureWithName( name: SpriteName.EnemyDiveBomber )
         self.value = 1500  // set the value for destroying the enemy
         self.hitPoints = 20     // set the number of hits required to destroy the enemy
@@ -28,19 +29,19 @@ class DiveBomber: EnemyBehaviors {
     
     func spawn(_ enemy:Enemy, parent:EnemyController){
         let enemyCopy = enemy.copy() as! SKSpriteNode
-        
         // X Axis
         self.startX = RandomFloatRange(min: 0, max: kViewSize.width)
         // Y Axis
         let startY = kViewSize.height + enemy.size.height
         // Copy from array
         enemyCopy.position = CGPoint(x: startX, y: startY)
+        enemyCopy.name = SpriteName.EnemyDiveBomber
         parent.addChild(enemyCopy)
     }
     
     func update(_ enemy:Enemy, delta: TimeInterval){
         lastChange += delta
-        let maxDrift = kViewSize.width / 4
+        let maxDrift = kViewSize.width / 5
         
         if lastChange > 1 {
             if  enemy.position.x > self.startX + maxDrift {
@@ -51,10 +52,6 @@ class DiveBomber: EnemyBehaviors {
             lastChange = 0
         }
         
-        enemy.position.x = enemy.position.x + velocity /// CGFloat(delta)
-        
-        //print("current x: "+String(enemy.position.x)+" start x: "+String(self.startX)+" dif: "+String(difference)+" maxDrift: "+String(maxDrift)+" velocity: "+String(velocity))
-        
         enemy.position.x = enemy.position.x + velocity
         
         // Add the drift to position y
@@ -63,11 +60,6 @@ class DiveBomber: EnemyBehaviors {
         if enemy.position.y < (0 - enemy.size.height) {
             enemy.removeFromParent()
         }
-        
-//        if enemy.position.x < (0 - enemy.size.width) || enemy.position.x > (kViewSize.width + enemy.size.width) {
-//            enemy.removeFromParent()
-//        }
-        
     }
     
     func destroy(_ enemy:Enemy){

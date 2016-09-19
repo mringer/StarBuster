@@ -74,14 +74,9 @@ class BonusController:SKNode {
     }
     
     // MARK: - Actions
-    func startSendingBonuses() {
-        self.sendingBonuses = true
-        self.movingBonuses = true
-    }
-    
-    func stopSendingBonuses() {
-        self.sendingBonuses = false
-        self.movingBonuses = false
+    func setBonusesOn(_ on:Bool) {
+        self.sendingBonuses = on
+        self.movingBonuses = on
     }
     
     func gameOver() {

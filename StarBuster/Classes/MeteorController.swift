@@ -83,14 +83,9 @@ class MeteorController:SKNode {
     }
     
     // MARK: - Action function
-    func startSendingMeteors() {
-        self.sendingMeteors = true
-        self.movingMeteors = true
-    }
-    
-    func stopSendingMeteors() {
-        self.sendingMeteors = false
-        self.movingMeteors = false
+    func setMeteorsOn(_ on:Bool) {
+        self.sendingMeteors = on
+        self.movingMeteors = on
     }
     
     fileprivate func gameOver() {

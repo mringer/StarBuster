@@ -58,7 +58,6 @@ class WeaponController:SKNode {
     //MARK: - Spawn Weapons
     fileprivate func spawnWeapons(player: Player) {
         if self.firingWeapons {
-            
             for ( i, _ ) in player.weapons.enumerated() {
                 // Copy from array
                 if  let weapon = player.weapons[i].copy() as? Weapon {
@@ -74,14 +73,9 @@ class WeaponController:SKNode {
     }
     
     // MARK: - Action function
-    func startFiringWeapons() {
-        self.firingWeapons = true
-        self.movingWeapons = true
-    }
-    
-    func stopFiringWeapons() {
-        self.firingWeapons = false
-        self.movingWeapons = false
+    func setWeaponsOn(_ on:Bool) {
+        self.firingWeapons = on
+        self.movingWeapons = on
     }
     
     fileprivate func gameOver() {

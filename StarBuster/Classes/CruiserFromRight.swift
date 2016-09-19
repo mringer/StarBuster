@@ -29,6 +29,7 @@ class CruiserFromRight: EnemyBehaviors {
         let startY = RandomFloatRange(min: kViewSize.height / 2, max: kViewSize.height  - enemy.size.height / 2)
         // Copy from array
         enemyCopy.position = CGPoint(x: startX, y: startY)
+        enemyCopy.name = SpriteName.EnemyCruiser
         parent.addChild(enemyCopy)
     }
     

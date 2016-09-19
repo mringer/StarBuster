@@ -73,13 +73,15 @@ class Enemy:SKSpriteNode {
             self.physicsBody = SKPhysicsBody(texture: texture, size: self.size)
             self.physicsBody?.categoryBitMask = Contact.Enemy
             self.physicsBody?.collisionBitMask = 0x0 // Igore collisions
-            self.physicsBody?.contactTestBitMask = 0x0 // Ignore contact
+            self.physicsBody?.contactTestBitMask = Contact.Player | Contact.Weapon //0x0 // Ignore contact
         }
     }
     
     //MARK: - Spawn
     func spawnEnemy(_ parent: EnemyController) {
         self.behaviors.spawn(self, parent: parent)
+        
+        parent.checkPhysics()
     }
     
     // MARK: - Update

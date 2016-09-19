@@ -66,9 +66,9 @@ class EnemyController:SKNode {
         self.movingEnemies = true
     }
     
-    func stopSendingEnemies() {
-        self.sendingEnemies = false
-        self.movingEnemies = false
+    func setEnemiesOn(_ on:Bool) {
+        self.sendingEnemies = on
+        self.movingEnemies = on
     }
     
     fileprivate func gameOver() {

@@ -32,17 +32,17 @@ class Background:SKNode{
     fileprivate func setupBackground(){
         self.backgroundParticles = GameParticles.sharedInstnce.createParticle(particles: GameParticles.Particles.magic)
         self.addChild(self.backgroundParticles)
-        self.stopBackground()
+        self.setBackgroundOn(false)
     }
     
     //MARK: - Action
-    func startBackground(){
-        self.backgroundParticles.particleSpeed = self.backgroundRunSpeed
-        self.backgroundParticles.particleSpeedRange = self.backgroundRunSpeed / 4
-    }
-    
-    func stopBackground(){
-        self.backgroundParticles.particleSpeed = self.backgroundStopSpeed
-        self.backgroundParticles.particleSpeedRange = self.backgroundStopSpeed / 4
+    func setBackgroundOn(_ on:Bool){
+        if on {
+            self.backgroundParticles.particleSpeed = self.backgroundRunSpeed
+            self.backgroundParticles.particleSpeedRange = self.backgroundRunSpeed / 4
+        }else{
+            self.backgroundParticles.particleSpeed = self.backgroundStopSpeed
+            self.backgroundParticles.particleSpeedRange = self.backgroundStopSpeed / 4
+        }
     }
 }

@@ -73,9 +73,11 @@ class Bonus:SKSpriteNode {
     
     // MARK: - Action
     func pickedUpBy(_ player:Player, statusBar:StatusBar) {
-        self.behaviors.bonusPickedUpBy(player, statusBar: statusBar)
-        self.playSoundEffect(GameAudio.SoundEffect.Pickup)
-        self.removeFromParent()
+        
+        self.run( SKAction.run({
+            self.playSoundEffect(GameAudio.SoundEffect.Pickup)
+            self.behaviors.bonusPickedUpBy(player, statusBar: statusBar)
+        }), completion: { self.removeFromParent() })
     }
     
     func gameOver() {

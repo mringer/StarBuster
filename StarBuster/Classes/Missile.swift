@@ -9,9 +9,9 @@
 
 import SpriteKit
 
-class Explosion:SKSpriteNode {
-
-    fileprivate var explosionFrames = [SKTexture]()
+class Missile:SKSpriteNode {
+    
+    fileprivate var frames = [SKTexture]()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -24,30 +24,28 @@ class Explosion:SKSpriteNode {
     convenience init(position:CGPoint) {
         
         // TODO: magic string
-        let animatedAtlas = SKTextureAtlas(named: "explosion")
+        let animatedAtlas = SKTextureAtlas(named: "missile")
         var frames = [SKTexture]()
         
         for ( i, _ ) in animatedAtlas.textureNames.enumerated() {
             // TODO: magic string
-            let textureName = "explosion\(i+1)"
+            let textureName = "missile0\(i+1)"
             frames.append(animatedAtlas.textureNamed(textureName))
         }
         
         let firstFrame = frames[0]
         let size = firstFrame.size()
         self.init(texture: firstFrame, color: SKColor.white, size: size )
-        self.explosionFrames = frames
+        self.frames = frames
         self.position = position
     }
     
-    func runAndExit() {
-        self.playSoundEffect(GameAudio.SoundEffect.Explosion)
-        self.run(
-            SKAction.animate(with: self.explosionFrames,
-                timePerFrame: 0.1,
-                resize: false,
-                restore: true),
-            completion: { self.removeFromParent() }
-        )
+    func runMissile() {
+        self.run( SKAction.repeatForever(
+            SKAction.animate(with: self.frames,
+                             timePerFrame: 0.1,
+                             resize: false,
+                             restore: true)
+        ))
     }
 }

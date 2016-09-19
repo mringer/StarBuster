@@ -14,7 +14,6 @@ class Music {
 }
 
 extension SKSpriteNode {
-    
     // MARK: - Sound Effects
     func playSoundEffect(_ soundEffect:GameAudio.SoundEffect) {
         if(GameAudio.sharedInstance.isSoundOn){
@@ -55,7 +54,8 @@ class GameAudio {
     fileprivate var musicPlayer = AVAudioPlayer()
     fileprivate var backroundMusic:String = Music.Game
     fileprivate var soundOn = true;
-
+    fileprivate var initialized = false
+    
     // MARK: - class constants
     fileprivate let soundShieldUp = SKAction.playSoundFileNamed(SoundEffects.ShieldUp, waitForCompletion: false)
     fileprivate let soundShieldDown = SKAction.playSoundFileNamed(SoundEffects.ShieldDown, waitForCompletion: false)
@@ -63,9 +63,7 @@ class GameAudio {
     fileprivate let soundExplosion = SKAction.playSoundFileNamed(SoundEffects.Explosion, waitForCompletion: false)
     fileprivate let soundPickup = SKAction.playSoundFileNamed(SoundEffects.Pickup, waitForCompletion: false)
     
-    // MARK: - Public class variables 
-    var initialized = false
-    
+    // MARK: - Public class variables
     enum SoundEffect {
         case ShieldUp
         case ShieldDown
@@ -108,7 +106,7 @@ class GameAudio {
         self.initialized = true
     }
     
-    func getSoundEffect(name:SoundEffect) -> SKAction {
+    fileprivate func getSoundEffect(name:SoundEffect) -> SKAction {
         
         switch name {
         case SoundEffect.ShieldUp:

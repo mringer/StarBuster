@@ -30,6 +30,7 @@ class CruiserFromLeft: EnemyBehaviors {
         // Copy from array
         enemyCopy.position = CGPoint(x: startX, y: startY)
         enemyCopy.xScale = fabs(enemyCopy.xScale) * -1.0 // flip ship orentation to facing right
+        enemyCopy.name = "CruiserFromLeft"
         parent.addChild(enemyCopy)
     }
     
