@@ -16,7 +16,7 @@ class Star:BonusBehaviors {
         self.texture = GameTextures.sharedInstance.textureWithName(name: SpriteName.Star)
     }
     
-    func bonusPickedUpBy(player:Player, statusBar:StatusBar) {
+    func bonusPickedUpBy(_ player:Player, statusBar:StatusBar) {
         player.starsCollected += 1
         player.streakCount += 1
         
@@ -27,7 +27,7 @@ class Star:BonusBehaviors {
         
         if player.weapons.count < 5 {
             // Add up to 5 laser
-            player.weapons.append(Weapon(type: Weapon.WeaponType.Laser))
+            player.weapons.append(Weapon(type: Weapon.WeaponType.laser))
         }
         
         player.checkStreak(streak: player.streakCount)

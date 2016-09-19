@@ -11,11 +11,11 @@ import SpriteKit
 class Background:SKNode{
     
     // Mark: - Private class constants
-    private let backgroundRunSpeed:CGFloat = -200.0
-    private let backgroundStopSpeed:CGFloat = -25.0
+    fileprivate let backgroundRunSpeed:CGFloat = -200.0
+    fileprivate let backgroundStopSpeed:CGFloat = -25.0
     
     // MARK: - Private Class Variables
-    private var backgroundParticles = SKEmitterNode()
+    fileprivate var backgroundParticles = SKEmitterNode()
     
     // MARK: - Init
     required init?(coder aDecoder: NSCoder ){
@@ -29,8 +29,8 @@ class Background:SKNode{
     }
     
     // Mark: - Private functions
-    private func setupBackground(){
-        self.backgroundParticles = GameParticles.sharedInstnce.createParticle(particles: GameParticles.Particles.Magic)
+    fileprivate func setupBackground(){
+        self.backgroundParticles = GameParticles.sharedInstnce.createParticle(particles: GameParticles.Particles.magic)
         self.addChild(self.backgroundParticles)
         self.stopBackground()
     }

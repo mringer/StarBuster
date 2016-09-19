@@ -54,7 +54,7 @@
 		1ED134B21D4299E7002BC092 /* StarBusterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED134B11D4299E7002BC092 /* StarBusterUITests.swift */; };
 		1EE56F691D89AC2100A0D4FE /* SpriteAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE56F681D89AC2100A0D4FE /* SpriteAnimation.swift */; };
 		1EE56F791D8DAD8F00A0D4FE /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE56F781D8DAD8F00A0D4FE /* TestingAppDelegate.swift */; };
-		1EE56F7B1D8DADDB00A0D4FE /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE56F7A1D8DADDB00A0D4FE /* main.swift */; };
+		1EE56F7B1D8DADDB00A0D4FE /* backup-main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE56F7A1D8DADDB00A0D4FE /* backup-main.swift */; };
 		1EE56F7F1D8DB9AF00A0D4FE /* GameMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE56F7E1D8DB9AF00A0D4FE /* GameMenu.swift */; };
 		1EE56F811D8DBE2500A0D4FE /* GameMenuActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE56F801D8DBE2500A0D4FE /* GameMenuActions.swift */; };
 		1EE56F831D8DD79B00A0D4FE /* LiveDebugLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE56F821D8DD79B00A0D4FE /* LiveDebugLog.swift */; };
@@ -156,7 +156,7 @@
 		1ED134B31D4299E7002BC092 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1EE56F681D89AC2100A0D4FE /* SpriteAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteAnimation.swift; sourceTree = "<group>"; };
 		1EE56F781D8DAD8F00A0D4FE /* TestingAppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
-		1EE56F7A1D8DADDB00A0D4FE /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		1EE56F7A1D8DADDB00A0D4FE /* backup-main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "backup-main.swift"; sourceTree = "<group>"; };
 		1EE56F7E1D8DB9AF00A0D4FE /* GameMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMenu.swift; sourceTree = "<group>"; };
 		1EE56F801D8DBE2500A0D4FE /* GameMenuActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMenuActions.swift; sourceTree = "<group>"; };
 		1EE56F821D8DD79B00A0D4FE /* LiveDebugLog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiveDebugLog.swift; sourceTree = "<group>"; };
@@ -517,7 +517,7 @@
 				1EF547271D42BF6F007C9060 /* GameViewController.swift */,
 				1EF547251D42BF6F007C9060 /* AppDelegate.swift */,
 				1EE56F781D8DAD8F00A0D4FE /* TestingAppDelegate.swift */,
-				1EE56F7A1D8DADDB00A0D4FE /* main.swift */,
+				1EE56F7A1D8DADDB00A0D4FE /* backup-main.swift */,
 			);
 			name = ViewController;
 			sourceTree = "<group>";
@@ -605,19 +605,22 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Matthew Ringer";
 				TargetAttributes = {
 					1ED134891D4299E5002BC092 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = JHM82TJNPP;
+						LastSwiftMigration = 0800;
 					};
 					1ED134A11D4299E7002BC092 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 1ED134891D4299E5002BC092;
 					};
 					1ED134AC1D4299E7002BC092 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 1ED134891D4299E5002BC092;
 					};
 				};
@@ -715,7 +718,7 @@
 				1E38F8791D599C8A00AEDA14 /* GameFonts.swift in Sources */,
 				1E0F1A061D6F881E009E0ACA /* Weapon.swift in Sources */,
 				1EF5474A1D42BFCC007C9060 /* SKColor+Extensions.swift in Sources */,
-				1EE56F7B1D8DADDB00A0D4FE /* main.swift in Sources */,
+				1EE56F7B1D8DADDB00A0D4FE /* backup-main.swift in Sources */,
 				1E38F8471D5179B300AEDA14 /* Background.swift in Sources */,
 				1EF5472A1D42BF6F007C9060 /* GameViewController.swift in Sources */,
 				1E0DCB941D76D54600C15765 /* Explosion.swift in Sources */,
@@ -805,8 +808,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -828,7 +833,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -851,8 +856,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -868,9 +875,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -888,6 +896,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewringer.StarBuster;
 				PRODUCT_NAME = StarBuster;
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -903,6 +912,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewringer.StarBuster;
 				PRODUCT_NAME = StarBuster;
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -915,6 +925,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewringer.StarBusterTests;
 				PRODUCT_NAME = StarBusterTests;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StarBuster.app/StarBuster";
 			};
 			name = Debug;
@@ -927,6 +938,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewringer.StarBusterTests;
 				PRODUCT_NAME = StarBusterTests;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/StarBuster.app/StarBuster";
 			};
 			name = Release;
@@ -939,6 +951,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewringer.SpaceRunnerUITests;
 				PRODUCT_NAME = StarBuster;
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = SpaceRunner;
 			};
 			name = Debug;
@@ -950,6 +963,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.matthewringer.SpaceRunnerUITests;
 				PRODUCT_NAME = StarBuster;
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = SpaceRunner;
 			};
 			name = Release;

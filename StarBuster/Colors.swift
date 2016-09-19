@@ -18,7 +18,7 @@ class Colors {
     class var FontScore:Int     { return 0xe6e7e8 }
     class var Border:Int        { return 0x49b9ea }
     
-    class func colorFromRGB( rgbValue rgbValue: Int ) -> SKColor {
+    class func colorFromRGB( rgbValue: Int ) -> SKColor {
         return SKColor(red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
                        green: CGFloat((rgbValue & 0x00FF00) >> 8 ) / 255.0,
                        blue: CGFloat((rgbValue & 0x0000FF) >> 8 ) / 255.0,

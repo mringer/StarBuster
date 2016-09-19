@@ -11,13 +11,13 @@ import SpriteKit
 
 class GameOverScene:SKScene {
     //MARK: - Private class contant
-    private let background = Background()
-    private let retryButton = RetryButton()
-    private let gameOverTitle = GameOverTitle()
+    fileprivate let background = Background()
+    fileprivate let retryButton = RetryButton()
+    fileprivate let gameOverTitle = GameOverTitle()
     
     //MARK: - Private class variable
 //    private var sceneLabel = SKLabelNode()
-    private var scoreBoard = ScoreBoard()
+    fileprivate var scoreBoard = ScoreBoard()
     
     //MAARK: - Init
     required init?(coder aDecoder: NSCoder) {
@@ -33,12 +33,12 @@ class GameOverScene:SKScene {
         self.setupScoreBoard(score, stars: stars, streak: streak)
     }
     
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         self.setupGameOverScrene()
     }
     
     //MARK: - Setup
-    private func setupGameOverScrene(){
+    fileprivate func setupGameOverScrene(){
         //Set the background color to black
         self.backgroundColor = Colors.colorFromRGB(rgbValue: Colors.Background)
         self.addChild(self.background)
@@ -46,7 +46,7 @@ class GameOverScene:SKScene {
         self.addChild(self.gameOverTitle)
     }
     
-    private func setupScoreBoard(score: Int, stars: Int, streak: Int) {
+    fileprivate func setupScoreBoard(_ score: Int, stars: Int, streak: Int) {
         let bestScore = GameSettings.sharedInstance.getBestScore()
         let bestStars = GameSettings.sharedInstance.getBestStars()
         let bestStreak = GameSettings.sharedInstance.getBestStreak()
@@ -57,15 +57,15 @@ class GameOverScene:SKScene {
     }
     
     //MARK: - Update
-    override func update(currentTime: NSTimeInterval){
+    override func update(_ currentTime: TimeInterval){
     }
     
     //MARK: Touch Events
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch:UITouch = touches.first! as UITouch
-        let touchLocation = touch.locationInNode(self)
+        let touchLocation = touch.location(in: self)
         
-        if self.retryButton.containsPoint(touchLocation){
+        if self.retryButton.contains(touchLocation){
             if kDebug{
                 print("GameOverScene: Loading Menu Scene.")
                 
@@ -76,15 +76,15 @@ class GameOverScene:SKScene {
         }
     }
     //MARK: -  Load Scene
-    private func loadMenuScene() {
+    fileprivate func loadMenuScene() {
         let menuScene = MenuScene(size: kViewSize)
-        let transition = SKTransition.fadeWithColor(SKColor.blackColor(), duration: 0.25)
+        let transition = SKTransition.fade(with: SKColor.black, duration: 0.25)
         self.view?.presentScene(menuScene, transition: transition)
     }
     
-    private func loadGameScene() {
+    fileprivate func loadGameScene() {
         let gameScene = GameScene(size: kViewSize)
-        let transition = SKTransition.fadeWithColor(SKColor.blackColor(), duration: 0.25)
+        let transition = SKTransition.fade(with: SKColor.black, duration: 0.25)
         self.view?.presentScene(gameScene, transition: transition)
     }
 }

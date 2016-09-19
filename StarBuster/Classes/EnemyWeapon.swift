@@ -13,9 +13,9 @@ protocol EnemyWeaponBehaviors {
     var color:SKColor       {get}
     var size:CGSize         {get}
     
-    func spawn(weapon:EnemyWeapon, enemy:Enemy, controller:EnemyWeaponController)
-    func update(weapon:EnemyWeapon, delta: NSTimeInterval)
-    func destroy(weapon:EnemyWeapon)
+    func spawn(_ weapon:EnemyWeapon, enemy:Enemy, controller:EnemyWeaponController)
+    func update(_ weapon:EnemyWeapon, delta: TimeInterval)
+    func destroy(_ weapon:EnemyWeapon)
 }
 
 class DefaultEnemyWeaponBehaviors:EnemyWeaponBehaviors {
@@ -25,9 +25,9 @@ class DefaultEnemyWeaponBehaviors:EnemyWeaponBehaviors {
     var size:CGSize         = CGSize()
     
     // TODO: - throw runtime or make nilable
-    func spawn(weapon:EnemyWeapon, enemy:Enemy, controller:EnemyWeaponController){}
-    func update(weapon:EnemyWeapon, delta: NSTimeInterval){}
-    func destroy(weapon:EnemyWeapon){}
+    func spawn(_ weapon:EnemyWeapon, enemy:Enemy, controller:EnemyWeaponController){}
+    func update(_ weapon:EnemyWeapon, delta: TimeInterval){}
+    func destroy(_ weapon:EnemyWeapon){}
 }
 
 class EnemyWeapon:SKSpriteNode {
@@ -48,7 +48,7 @@ class EnemyWeapon:SKSpriteNode {
         
         //var size = CGSize(width: 1.0, height: 5.0)
         if let texture = behaviors.texture as SKTexture? {
-            self.init(texture: texture, color: SKColor.redColor(), size: texture.size())
+            self.init(texture: texture, color: SKColor.red, size: texture.size())
         } else {
             self.init(texture: nil, color: behaviors.color, size: behaviors.size)
         }
@@ -58,7 +58,7 @@ class EnemyWeapon:SKSpriteNode {
     }
     
     // MARK: - Setup
-    private func setupWeaponPhysics() {
+    fileprivate func setupWeaponPhysics() {
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width / 2, center: self.anchorPoint)
         self.physicsBody?.categoryBitMask = Contact.EnemyWeapon // sets the type of sprite in AB collision coparrison
         self.physicsBody?.collisionBitMask = 0x0 // sets collisions with the edge of the screen.
@@ -66,7 +66,7 @@ class EnemyWeapon:SKSpriteNode {
     }
     
     // MARK: - Update
-    func update(delta delta: NSTimeInterval) {
+    func update(delta: TimeInterval) {
         self.behaviors.update(self, delta: delta)
     }
     
@@ -82,7 +82,7 @@ class EnemyWeapon:SKSpriteNode {
     }
     
     // Help NSCopying do its job
-    override func copyWithZone(zone: NSZone) -> AnyObject {
+    override func copy(with zone: NSZone?) -> Any {
         let copy = EnemyWeapon(behaviors: self.behaviors)
         return copy
     }

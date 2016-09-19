@@ -14,9 +14,9 @@ protocol EnemyBehaviors {
     var hitPoints:Int               {get}
     var weapons:[EnemyWeapon]       {get}
     
-    func spawn(enemy:Enemy, parent:EnemyController)
-    func update(enemy:Enemy, delta: NSTimeInterval)
-    func destroy(enemy:Enemy)
+    func spawn(_ enemy:Enemy, parent:EnemyController)
+    func update(_ enemy:Enemy, delta: TimeInterval)
+    func destroy(_ enemy:Enemy)
     
     // Clone behavior for for dereferencing inside NSCopying copyWithZone
     func new() -> EnemyBehaviors
@@ -31,9 +31,9 @@ class DefaultEnemyBehaviors:EnemyBehaviors {
     }
     
     // TODO: - throw runtime or make nilable
-    func spawn(enemy:Enemy, parent:EnemyController){}
-    func update(enemy:Enemy, delta: NSTimeInterval){}
-    func destroy(enemy:Enemy){}
+    func spawn(_ enemy:Enemy, parent:EnemyController){}
+    func update(_ enemy:Enemy, delta: TimeInterval){}
+    func destroy(_ enemy:Enemy){}
     func new() -> EnemyBehaviors {
         return DefaultEnemyBehaviors()
     }
@@ -62,13 +62,13 @@ class Enemy:SKSpriteNode {
     convenience init(behaviors: EnemyBehaviors) {
         // Set the size of the meteor
         let texture = behaviors.texture
-        self.init(texture: texture, color: SKColor.whiteColor(), size: texture.size())
+        self.init(texture: texture, color: SKColor.white, size: texture.size())
         self.behaviors = behaviors
         self.hitPoints = behaviors.hitPoints
         self.value = behaviors.value
     }
     
-    private func setupEnemyPhysics() {
+    fileprivate func setupEnemyPhysics() {
         if let texture = self.texture as SKTexture? {
             self.physicsBody = SKPhysicsBody(texture: texture, size: self.size)
             self.physicsBody?.categoryBitMask = Contact.Enemy
@@ -78,16 +78,16 @@ class Enemy:SKSpriteNode {
     }
     
     //MARK: - Spawn
-    func spawnEnemy(parent: EnemyController) {
+    func spawnEnemy(_ parent: EnemyController) {
         self.behaviors.spawn(self, parent: parent)
     }
     
     // MARK: - Update
-    func update(delta delta: NSTimeInterval) {
+    func update(delta: TimeInterval) {
         self.behaviors.update(self, delta: delta)
     }
     
-    func hit(hit:Int, player: Player?) {
+    func hit(_ hit:Int, player: Player?) {
         self.hitPoints -= hit
         if self.hitPoints <= 0 {
             // Increase player score by enemy value
@@ -109,7 +109,7 @@ class Enemy:SKSpriteNode {
     }
     
     // Help NSCopying do its job
-    override func copyWithZone(zone: NSZone) -> AnyObject {
+    override func copy(with zone: NSZone?) -> Any {
         //var newBehavior =
         let copy = Enemy(behaviors: self.behaviors.new())
         return copy

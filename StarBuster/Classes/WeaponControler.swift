@@ -13,9 +13,9 @@ class WeaponController:SKNode {
     //private let laser = Weapon(type: Weapon.WeaponType.Laser)
     
     // MARK: - Private class variables
-    private var firingWeapons = false
-    private var movingWeapons = false
-    private var frameCount = 0.0
+    fileprivate var firingWeapons = false
+    fileprivate var movingWeapons = false
+    fileprivate var frameCount = 0.0
     //private var weaponArray = [SKSpriteNode]()
     
     // MARK: - Init
@@ -28,12 +28,12 @@ class WeaponController:SKNode {
         self.setupWeaponController()
     }
     
-    private func setupWeaponController() {
+    fileprivate func setupWeaponController() {
         //self.weaponArray = [self.laser]
     }
     
     // MARK: - Update
-    func update(delta delta: NSTimeInterval, player: Player) {
+    func update(delta: TimeInterval, player: Player) {
         // Is it time to fire the guns?
         if self.firingWeapons {
             self.frameCount += delta
@@ -56,10 +56,10 @@ class WeaponController:SKNode {
     }
     
     //MARK: - Spawn Weapons
-    private func spawnWeapons(player player: Player) {
+    fileprivate func spawnWeapons(player: Player) {
         if self.firingWeapons {
             
-            for ( i, _ ) in player.weapons.enumerate() {
+            for ( i, _ ) in player.weapons.enumerated() {
                 // Copy from array
                 if  let weapon = player.weapons[i].copy() as? Weapon {
                     let laserSpacing = weapon.size.width * 10
@@ -84,7 +84,7 @@ class WeaponController:SKNode {
         self.movingWeapons = false
     }
     
-    private func gameOver() {
+    fileprivate func gameOver() {
         for node in self.children {
             if let meteor = node as? Meteor {
                 meteor.gameOver()

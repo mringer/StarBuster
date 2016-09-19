@@ -12,18 +12,18 @@ class Meteor:SKSpriteNode {
     
     // MARK: - Public enum
     enum MeteorType {
-        case Huge
-        case Large
-        case Medium
-        case Small
+        case huge
+        case large
+        case medium
+        case small
     }
     
     // MARK: - Public class variables
     var drift = CGFloat()
-    var meteorSize = MeteorType.Huge
+    var meteorSize = MeteorType.huge
     var value = 0
     
-    private var hitPoints = 1
+    fileprivate var hitPoints = 1
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -40,21 +40,21 @@ class Meteor:SKSpriteNode {
         var texture = SKTexture()
         
         switch type {
-        case MeteorType.Huge:
+        case MeteorType.huge:
             texture = GameTextures.sharedInstance.textureWithName(name: SpriteName.MeteorHuge)
             value = 10
-        case MeteorType.Large:
+        case MeteorType.large:
             texture = GameTextures.sharedInstance.textureWithName(name: SpriteName.MeteorLarge)
             value = 20
-        case MeteorType.Medium:
+        case MeteorType.medium:
             texture = GameTextures.sharedInstance.textureWithName(name: SpriteName.MeteorMedium)
             value = 40
-        case MeteorType.Small:
+        case MeteorType.small:
             texture = GameTextures.sharedInstance.textureWithName(name: SpriteName.MeteorSmall)
             value = 60
         }
         
-        self.init(texture: texture, color: SKColor.whiteColor(), size: texture.size())
+        self.init(texture: texture, color: SKColor.white, size: texture.size())
         self.meteorSize = meteorSize
         self.value = value
         self.setupMeteor()
@@ -62,11 +62,11 @@ class Meteor:SKSpriteNode {
     }
     
     // MARK: - Setup
-    private func setupMeteor(){
+    fileprivate func setupMeteor(){
         
     }
     
-    private func setupMeteorPhysics() {
+    fileprivate func setupMeteorPhysics() {
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width / 2, center: self.anchorPoint)
         self.physicsBody?.categoryBitMask = Contact.Meteor
         self.physicsBody?.collisionBitMask = 0x0 // Igore collisions
@@ -74,7 +74,7 @@ class Meteor:SKSpriteNode {
     }
     
     // MARK: - Update
-    func update(delta delta: NSTimeInterval) {
+    func update(delta: TimeInterval) {
         
         // Move verticallhy down the screen based on device type
         self.position.y =  kDeviceTablet ? self.position.y - CGFloat(delta * 60 *  4) : self.position.y - CGFloat(delta * 60 *  2)
@@ -94,7 +94,7 @@ class Meteor:SKSpriteNode {
         return self.meteorSize
     }
     
-    func hit(damage:Int, player:Player?) {
+    func hit(_ damage:Int, player:Player?) {
         self.hitPoints -= damage
         if self.hitPoints <= 0 {
             if let p = player as Player? {
@@ -110,7 +110,7 @@ class Meteor:SKSpriteNode {
     }
     
     // Help NSCopying do its job
-    override func copyWithZone(zone: NSZone) -> AnyObject {
+    override func copy(with zone: NSZone?) -> Any {
         let copy = Meteor(type: meteorSize)
         return copy
     }

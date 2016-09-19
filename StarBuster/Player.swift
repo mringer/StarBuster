@@ -11,12 +11,12 @@ import SpriteKit
 class Player:SKSpriteNode {
     
     // MARK: - Private class constants
-    private let touchOffset:CGFloat = kDeviceTablet ? 64.0 : 32.0
-    private let filter:CGFloat = 0.05
+    fileprivate let touchOffset:CGFloat = kDeviceTablet ? 64.0 : 32.0
+    fileprivate let filter:CGFloat = 0.05
     
     // MARK: - Private variables
-    private var targetPosition = CGPoint()
-    private var canMove = false
+    fileprivate var targetPosition = CGPoint()
+    fileprivate var canMove = false
     
     
     // MARK: Public variables
@@ -33,30 +33,30 @@ class Player:SKSpriteNode {
         super.init(coder: aDecoder)
     }
     
-    private override init(texture: SKTexture?, color: UIColor, size: CGSize) {
+    fileprivate override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size)
     }
     
     convenience init() {
     
         let texture = GameTextures.sharedInstance.textureWithName(name: SpriteName.Player)
-        self.init(texture: texture, color: SKColor.whiteColor(), size: texture.size())
+        self.init(texture: texture, color: SKColor.white, size: texture.size())
         self.setupPlayer()
         self.setupPlayerPhysics()
     }
     
     // MARK: - Setup Player
-    private func setupPlayer() {
+    fileprivate func setupPlayer() {
     
         // Initial position is centered horozontaly and 20% up the Y-axis
         self.position = CGPoint(x: kViewSize.width / 2, y: kViewSize.height * 0.20)
         self.targetPosition = self.position
         
-        let laser = Weapon(type: Weapon.WeaponType.Laser)
+        let laser = Weapon(type: Weapon.WeaponType.laser)
         self.weapons = [laser]
     }
     
-    private func setupPlayerPhysics() {
+    fileprivate func setupPlayerPhysics() {
         
         if let texture = self.texture as SKTexture? {
             self.physicsBody = SKPhysicsBody(texture: texture, size: self.size)
@@ -67,7 +67,7 @@ class Player:SKSpriteNode {
             }
     }
     
-    private func move() {
+    fileprivate func move() {
         // Set the self position to the target position
         let newX = Smooth(startPoint: self.position.x, endPoint: self.targetPosition.x, filter: filter)
         let newY = Smooth(startPoint: self.position.y, endPoint: self.targetPosition.y, filter: filter)
@@ -83,7 +83,7 @@ class Player:SKSpriteNode {
     }
     
     // MARK: - Movement
-    func updateTargetLocation(newLocation newLocation: CGPoint) {
+    func updateTargetLocation(newLocation: CGPoint) {
         //Set the target location to the new location with the Y position adjusted by touchOffset
         self.targetPosition = CGPoint(x: newLocation.x, y: newLocation.y + self.touchOffset)
         
@@ -103,19 +103,19 @@ class Player:SKSpriteNode {
     }
     
     // MARK: - Update Player Score
-    func updatePlayerScore(score score:Int) {
+    func updatePlayerScore(score:Int) {
         self.score += score
     }
     
     // MARK: - Update Player Lives
-    private func updatePlayerLives() {
+    fileprivate func updatePlayerLives() {
         self.lives -= 1
     }
     
     // MARK: - Action Blink Player
-    private func blinkPlayer() {
-        let blink = SKAction.sequence([SKAction.fadeOutWithDuration(0.15),SKAction.fadeInWithDuration(0.15)])
-        self.runAction(SKAction.repeatActionForever(blink), withKey: "Blink")
+    fileprivate func blinkPlayer() {
+        let blink = SKAction.sequence([SKAction.fadeOut(withDuration: 0.15),SKAction.fadeIn(withDuration: 0.15)])
+        self.run(SKAction.repeatForever(blink), withKey: "Blink")
     }
     
     // MARK: - Hit Meteor
@@ -125,19 +125,19 @@ class Player:SKSpriteNode {
             //Subtract lives
             self.updatePlayerLives()
             // Set Player back to a single laser
-            self.weapons = [Weapon(type: Weapon.WeaponType.Laser)]
+            self.weapons = [Weapon(type: Weapon.WeaponType.laser)]
             
             // Make player immune
             self.immune = true
             
             // Blink player
             self.blinkPlayer()
-            self.runAction(GameAudio.sharedInstance.soundShieldUp)
+            self.playSoundEffect(GameAudio.SoundEffect.ShieldUp)
             // In 3 second remove action key for blink
-            self.runAction(SKAction.waitForDuration(3.0), completion: {
+            self.run(SKAction.wait(forDuration: 3.0), completion: {
                 self.immune = false
-                self.removeActionForKey("Blink")
-                self.runAction(GameAudio.sharedInstance.soundShieldDown)
+                self.removeAction(forKey: "Blink")
+                self.playSoundEffect(GameAudio.SoundEffect.ShieldDown)
             })
         }
     }
@@ -158,7 +158,7 @@ class Player:SKSpriteNode {
     }
     
     // MARK: - Pickup 
-    func checkStreak(streak streak:Int) {
+    func checkStreak(streak:Int) {
         if streak > self.highStreak {
             self.highStreak = streak
         }

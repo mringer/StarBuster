@@ -10,16 +10,16 @@ import SpriteKit
 
 class MeteorController:SKNode {
     
-    private let meteor0 = Meteor(type: Meteor.MeteorType.Huge)
-    private let meteor1 = Meteor(type: Meteor.MeteorType.Large)
-    private let meteor2 = Meteor(type: Meteor.MeteorType.Medium)
-    private let meteor3 = Meteor(type: Meteor.MeteorType.Small)
+    fileprivate let meteor0 = Meteor(type: Meteor.MeteorType.huge)
+    fileprivate let meteor1 = Meteor(type: Meteor.MeteorType.large)
+    fileprivate let meteor2 = Meteor(type: Meteor.MeteorType.medium)
+    fileprivate let meteor3 = Meteor(type: Meteor.MeteorType.small)
     
     // MARK: - Private class variables
-    private var sendingMeteors = false
-    private var movingMeteors = false
-    private var frameCount = 0.0
-    private var meteorArray = [SKSpriteNode]()
+    fileprivate var sendingMeteors = false
+    fileprivate var movingMeteors = false
+    fileprivate var frameCount = 0.0
+    fileprivate var meteorArray = [SKSpriteNode]()
     
     // MARK: - Init
     required init?(coder aDecoder: NSCoder) {
@@ -31,12 +31,12 @@ class MeteorController:SKNode {
         self.setupMeteorController()
     }
     
-    private func setupMeteorController() {
+    fileprivate func setupMeteorController() {
         self.meteorArray = [self.meteor0, self.meteor1, self.meteor2, self.meteor3]
     }
     
     // MARK: - Update
-    func update(delta delta: NSTimeInterval) {
+    func update(delta: TimeInterval) {
         // Is it time to send more meteors?
         if self.sendingMeteors {
             self.frameCount += delta
@@ -59,7 +59,7 @@ class MeteorController:SKNode {
     }
     
     //MARK: - Spawn
-    private func spawnMeteors() {
+    fileprivate func spawnMeteors() {
         if self.sendingMeteors {
             
             let randomMeteorCount = kDeviceTablet ? RandomIntegerBetween(min: 6, max: 10) : RandomIntegerBetween(min: 10, max: 14)
@@ -93,7 +93,7 @@ class MeteorController:SKNode {
         self.movingMeteors = false
     }
     
-    private func gameOver() {
+    fileprivate func gameOver() {
         for node in self.children {
             if let meteor = node as? Meteor {
                 meteor.gameOver()

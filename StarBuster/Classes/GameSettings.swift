@@ -17,57 +17,67 @@ class GameSettings {
     }
     
     // MARK: - Private Class Constants
-    let localDefaults = NSUserDefaults.standardUserDefaults()
-    private let keyFirstRun = "FirstRun"
-    private let keyBestScore = "BestScore"
-    private let keyBestStars = "BestStars"
-    private let keyBestStreak = "BestStreak"
+    let localDefaults = UserDefaults.standard
+    fileprivate let keyFirstRun = "FirstRun"
+    fileprivate let keyBestScore = "BestScore"
+    fileprivate let keyBestStars = "BestStars"
+    fileprivate let keyBestStreak = "BestStreak"
+    fileprivate let keySoundOn = "SoundOn"
     
     
     // MARK: - Init
     init() {
-        if self.localDefaults.objectForKey(keyFirstRun) == nil {
+        if self.localDefaults.object(forKey: keyFirstRun) == nil {
             self.firstLaunch()
         }
     }
     
     // MARK: - Private functions
-    private func firstLaunch() {
-        self.localDefaults.setInteger(0, forKey: keyBestScore)
-        self.localDefaults.setBool(false, forKey: keyFirstRun)
-        self.localDefaults.setInteger(0, forKey: keyBestStars)
-        self.localDefaults.setInteger(0, forKey: keyBestStreak)
+    fileprivate func firstLaunch() {
+        self.localDefaults.set(0, forKey: keyBestScore)
+        self.localDefaults.set(false, forKey: keyFirstRun)
+        self.localDefaults.set(0, forKey: keyBestStars)
+        self.localDefaults.set(0, forKey: keyBestStreak)
+        self.localDefaults.set(false, forKey: keySoundOn)
         self.localDefaults.synchronize()
     }
     
     // MARK: - Public saving functions
-    func saveBestScore(score score:Int) {
-        self.localDefaults.setInteger(score, forKey: keyBestScore)
+    func saveBestScore(score:Int) {
+        self.localDefaults.set(score, forKey: keyBestScore)
         self.localDefaults.synchronize()
     }
     
-    func saveBestStars(stars stars:Int) {
-        self.localDefaults.setInteger(stars, forKey: keyBestStars)
+    func saveBestStars(stars:Int) {
+        self.localDefaults.set(stars, forKey: keyBestStars)
         self.localDefaults.synchronize()
     }
     
-    func saveBestStreak(streak streak:Int) {
-        self.localDefaults.setInteger(streak, forKey: keyBestStreak)
+    func saveBestStreak(streak:Int) {
+        self.localDefaults.set(streak, forKey: keyBestStreak)
+        self.localDefaults.synchronize()
+    }
+    
+    func saveSoundOn(on:Bool) {
+        self.localDefaults.set(on, forKey: keySoundOn)
         self.localDefaults.synchronize()
     }
     
     func getBestScore() -> Int {
-        return self.localDefaults.integerForKey(keyBestScore)
+        return self.localDefaults.integer(forKey: keyBestScore)
     }
     
     func getBestStars() -> Int {
-        return self.localDefaults.integerForKey(keyBestStars)
+        return self.localDefaults.integer(forKey: keyBestStars)
     }
     
     
     func getBestStreak() -> Int {
-        return self.localDefaults.integerForKey(keyBestStreak)
+        return self.localDefaults.integer(forKey: keyBestStreak)
     }
     
+    func getSoundOn() -> Bool {
+        return self.localDefaults.bool(forKey: keySoundOn)
+    }
     
 }

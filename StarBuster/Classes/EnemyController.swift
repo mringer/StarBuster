@@ -11,11 +11,11 @@ import SpriteKit
 class EnemyController:SKNode {
     
     // MARK: - Private class variables
-    private var sendingEnemies = false
-    private var movingEnemies = false
-    private var frameCount = 0.0
-    private var spawnRate = 6.0
-    private var enemyArray = [Enemy]()
+    fileprivate var sendingEnemies = false
+    fileprivate var movingEnemies = false
+    fileprivate var frameCount = 0.0
+    fileprivate var spawnRate = 6.0
+    fileprivate var enemyArray = [Enemy]()
     
     // MARK: - Init
     required init?(coder aDecoder: NSCoder) {
@@ -32,12 +32,12 @@ class EnemyController:SKNode {
         self.enemyArray = enemiesArray
     }
     
-    private func setupController() {
+    fileprivate func setupController() {
         self.enemyArray = [Enemy()]
     }
     
     // MARK: - Update
-    func update(delta delta: NSTimeInterval) {
+    func update(delta: TimeInterval) {
         // Is it time to send more meteors?
         if self.sendingEnemies {
             self.frameCount += delta
@@ -71,7 +71,7 @@ class EnemyController:SKNode {
         self.movingEnemies = false
     }
     
-    private func gameOver() {
+    fileprivate func gameOver() {
         for node in self.children {
             if let meteor = node as? Enemy {
                 meteor.gameOver()

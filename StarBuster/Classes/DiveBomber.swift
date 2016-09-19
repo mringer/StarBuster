@@ -15,9 +15,9 @@ class DiveBomber: EnemyBehaviors {
     var hitPoints:Int
     var weapons = [EnemyWeapon]()
     
-    private var startX:CGFloat
-    private var velocity = kDeviceTablet ? CGFloat(4) : CGFloat(2)
-    private var lastChange:NSTimeInterval = 0
+    fileprivate var startX:CGFloat
+    fileprivate var velocity = kDeviceTablet ? CGFloat(4) : CGFloat(2)
+    fileprivate var lastChange:TimeInterval = 0
     
     init() {
         self.texture = GameTextures.sharedInstance.textureWithName( name: SpriteName.EnemyDiveBomber )
@@ -26,7 +26,7 @@ class DiveBomber: EnemyBehaviors {
         self.startX = kViewSize.width / 2
     }
     
-    func spawn(enemy:Enemy, parent:EnemyController){
+    func spawn(_ enemy:Enemy, parent:EnemyController){
         let enemyCopy = enemy.copy() as! SKSpriteNode
         
         // X Axis
@@ -38,7 +38,7 @@ class DiveBomber: EnemyBehaviors {
         parent.addChild(enemyCopy)
     }
     
-    func update(enemy:Enemy, delta: NSTimeInterval){
+    func update(_ enemy:Enemy, delta: TimeInterval){
         lastChange += delta
         let maxDrift = kViewSize.width / 4
         
@@ -70,7 +70,7 @@ class DiveBomber: EnemyBehaviors {
         
     }
     
-    func destroy(enemy:Enemy){
+    func destroy(_ enemy:Enemy){
         
     }
     

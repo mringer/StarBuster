@@ -11,11 +11,11 @@ import SpriteKit
 class ScoreBoard:SKNode {
     
     // MARK: - Private convenience constants
-    private let fonts = GameFonts.sharedInstance
-    private let fontType = GameFonts.LabelType.StatusBar
+    fileprivate let fonts = GameFonts.sharedInstance
+    fileprivate let fontType = GameFonts.LabelType.statusBar
     
     // MARK: - Private variables
-    private var background = SKShapeNode()
+    fileprivate var background = SKShapeNode()
     
     // MARK: - Init
     required init?(coder aDecoder: NSCoder){
@@ -34,10 +34,10 @@ class ScoreBoard:SKNode {
     }
     
     // MARK: - Setup
-    private func setupScoreBackground() {
+    fileprivate func setupScoreBackground() {
         
         // Rectangle that is 90% of the width and 25% of the height of the screen
-        let backgroundRect = CGRectMake(0, 0, kViewSize.width * 0.9, kViewSize.height * 0.25)
+        let backgroundRect = CGRect(x: 0, y: 0, width: kViewSize.width * 0.9, height: kViewSize.height * 0.25)
         self.background = SKShapeNode(rect: backgroundRect, cornerRadius: 5.0)
         
         // Give background a border stroke
@@ -49,7 +49,7 @@ class ScoreBoard:SKNode {
         self.addChild(self.background)
     }
     
-    private func setupScores(score: Int, bestScore: Int, streak: Int, bestStreak: Int, stars: Int, bestStars: Int) {
+    fileprivate func setupScores(_ score: Int, bestScore: Int, streak: Int, bestStreak: Int, stars: Int, bestStars: Int) {
         
         // Width and height conveience constants
         let frameWidth = self.background.frame.width

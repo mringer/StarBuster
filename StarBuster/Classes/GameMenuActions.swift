@@ -11,7 +11,7 @@ import UIKit
 class GameMenuActions: UIView {
     
 
-    @IBAction func toggleSound(sender: AnyObject) {
+    @IBAction func toggleSound(_ sender: AnyObject) {
             GameAudio.sharedInstance.pausedBackgroundMusic()
     }
 

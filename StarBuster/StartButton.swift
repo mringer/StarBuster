@@ -15,29 +15,29 @@ class StartButton:SKSpriteNode {
         super.init(coder:aDecoder)
     }
     
-    private override init(texture: SKTexture?, color:UIColor, size:CGSize){
+    fileprivate override init(texture: SKTexture?, color:UIColor, size:CGSize){
         super.init(texture: texture, color:color, size:size)
     }
     
     convenience init(){
         let texture = GameTextures.sharedInstance.textureWithName(name: SpriteName.ButtonStart)
-        self.init(texture: texture, color: SKColor.whiteColor(), size: texture.size())
+        self.init(texture: texture, color: SKColor.white, size: texture.size())
         self.setupStartButton()
     }
     
-    private func setupStartButton(){
+    fileprivate func setupStartButton(){
         self.position = CGPoint(x: kViewSize.width / 2, y: kViewSize.height * 0.3)
     }
     
     //MARK: - Actions
     func tapped(){
-        self.runAction(GameAudio.sharedInstance.soundButtonTap)
+        self.playSoundEffect(GameAudio.SoundEffect.ButtonTap)
     }
     
     func fadeStartButton() {
-        self.runAction(SKAction.fadeOutWithDuration(0.5)) {
+        self.run(SKAction.fadeOut(withDuration: 0.5), completion: {
             self.removeFromParent()
-        }
+        }) 
     }
 }
 

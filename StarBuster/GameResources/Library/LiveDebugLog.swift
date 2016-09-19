@@ -10,21 +10,21 @@ import Foundation
 import UIKit
 
 extension UIView {
-    public func liveDebugLog(message: String) {
+    public func liveDebugLog(_ message: String) {
         #if !(TARGET_OS_IPHONE)
             let logPath = "/tmp/XcodeLiveRendering.log"
-            if !NSFileManager.defaultManager().fileExistsAtPath(logPath) {
-                NSFileManager.defaultManager().createFileAtPath(logPath, contents: NSData(), attributes: nil)
+            if !FileManager.default.fileExists(atPath: logPath) {
+                FileManager.default.createFile(atPath: logPath, contents: Data(), attributes: nil)
             }
             
-            let fileHandle = NSFileHandle(forWritingAtPath: logPath)
+            let fileHandle = FileHandle(forWritingAtPath: logPath)
             fileHandle!.seekToEndOfFile()
             
-            let date = NSDate()
-            let bundle = NSBundle(forClass: self.dynamicType)
-            let application: AnyObject = bundle.objectForInfoDictionaryKey("CFBundleName")!
-            let data = "\(date) \(application) \(message)\n".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
-            fileHandle!.writeData(data!)
+            let date = Date()
+            let bundle = Bundle(for: type(of: self))
+            let application: AnyObject = bundle.object(forInfoDictionaryKey: "CFBundleName")! as AnyObject
+            let data = "\(date) \(application) \(message)\n".data(using: String.Encoding.utf8, allowLossyConversion: true)
+            fileHandle!.write(data!)
         #endif
     }
 }

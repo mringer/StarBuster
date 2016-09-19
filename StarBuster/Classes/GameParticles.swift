@@ -18,11 +18,11 @@ class GameParticles {
     
     // MARK: - Public class enum
     internal enum Particles:Int {
-        case Magic
+        case magic
     }
     
     // MARK: - Private class properties
-    private var magicParticles = SKEmitterNode()
+    fileprivate var magicParticles = SKEmitterNode()
     
     // MARK: - Init 
     
@@ -31,7 +31,7 @@ class GameParticles {
     }
     
     // MARK: - Setup
-    private func setupMagicParticles(){
+    fileprivate func setupMagicParticles(){
         
         // Birthrate and Lifetime
         self.magicParticles.particleBirthRate = 35.0
@@ -39,7 +39,7 @@ class GameParticles {
         self.magicParticles.particleLifetimeRange = 1.25
         
         // Position and Range
-        self.magicParticles.particlePositionRange = CGVectorMake(kViewSize.width * 2, kViewSize.height * 2)
+        self.magicParticles.particlePositionRange = CGVector(dx: kViewSize.width * 2, dy: kViewSize.height * 2)
         
         // Speed
         self.magicParticles.particleSpeed = -200.0
@@ -67,9 +67,9 @@ class GameParticles {
     }
     
     // MARK: - Public functions
-    func createParticle(particles particles: Particles) -> SKEmitterNode {
+    func createParticle(particles: Particles) -> SKEmitterNode {
         switch particles {
-        case Particles.Magic:
+        case Particles.magic:
             return self.magicParticles.copy() as! SKEmitterNode
         }
     }

@@ -11,14 +11,14 @@ import SpriteKit
 protocol BonusBehaviors {
     var texture:SKTexture   {get}
     
-    func bonusPickedUpBy(player:Player, statusBar:StatusBar)
+    func bonusPickedUpBy(_ player:Player, statusBar:StatusBar)
 }
 
 class DefaultBonusBehaviors:BonusBehaviors {
     init(){
     }
     var texture:SKTexture   = SKTexture()
-    func bonusPickedUpBy(player:Player, statusBar:StatusBar){}
+    func bonusPickedUpBy(_ player:Player, statusBar:StatusBar){}
 }
 
 class Bonus:SKSpriteNode {
@@ -26,24 +26,24 @@ class Bonus:SKSpriteNode {
     // MARK: - Public class properties
     internal var drift = CGFloat()
     
-    private var behaviors:BonusBehaviors = DefaultBonusBehaviors()
+    fileprivate var behaviors:BonusBehaviors = DefaultBonusBehaviors()
     
     // MARK: - Init
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
-    private override init(texture: SKTexture?, color:UIColor, size:CGSize) {
+    fileprivate override init(texture: SKTexture?, color:UIColor, size:CGSize) {
         super.init(texture: texture, color:color, size:size)
     }
     
     convenience init(behaviors: BonusBehaviors) {
-        self.init(texture: behaviors.texture, color: SKColor.whiteColor(), size: behaviors.texture.size())
+        self.init(texture: behaviors.texture, color: SKColor.white, size: behaviors.texture.size())
         self.setupBonusPhysics()
         self.behaviors = behaviors
     }
     
-    private func setupBonusPhysics() {
+    fileprivate func setupBonusPhysics() {
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width / 2, center: self.anchorPoint)
         self.physicsBody?.categoryBitMask = Contact.Bonus
         self.physicsBody?.collisionBitMask = 0x0
@@ -52,7 +52,7 @@ class Bonus:SKSpriteNode {
     
     // MARK: - Update
     
-    func update(delta delta:NSTimeInterval) {
+    func update(delta:TimeInterval) {
         self.position.x = self.position.x + drift // TODO: - drift is used?
         self.position.y = kDeviceTablet ? self.position.y - CGFloat(delta * 60 * 4) : self.position.y - CGFloat(delta * 60 * 2)
         
@@ -72,9 +72,10 @@ class Bonus:SKSpriteNode {
     }
     
     // MARK: - Action
-    func pickedUpBy(player:Player, statusBar:StatusBar) {
+    func pickedUpBy(_ player:Player, statusBar:StatusBar) {
         self.behaviors.bonusPickedUpBy(player, statusBar: statusBar)
-        self.runAction(GameAudio.sharedInstance.soundPickup, completion: { self.removeFromParent() })
+        self.playSoundEffect(GameAudio.SoundEffect.Pickup)
+        self.removeFromParent()
     }
     
     func gameOver() {
@@ -82,7 +83,7 @@ class Bonus:SKSpriteNode {
     }
     
     // Help NSCopying do its job
-    override func copyWithZone(zone: NSZone) -> AnyObject {
+    override func copy(with zone: NSZone?) -> Any {
         let copy = Bonus(behaviors: self.behaviors)
         return copy
     }

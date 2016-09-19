@@ -16,7 +16,7 @@ class OneUp:BonusBehaviors {
         self.texture = GameTextures.sharedInstance.textureWithName(name: SpriteName.PlayerLives)
     }
     
-    func bonusPickedUpBy(player:Player, statusBar:StatusBar) {
+    func bonusPickedUpBy(_ player:Player, statusBar:StatusBar) {
         player.lives += 1
         statusBar.updateLives(lives: player.lives)
         FloatLabel.spawn(player, value: "1UP!")

@@ -14,6 +14,8 @@ import UIKit
     var view: UIView!
     let nibName = "GameMenu"
     
+    @IBOutlet weak var SoundOnSwitch: UISwitch!
+    
     override init(frame: CGRect) { // programmer creates our custom View
         super.init(frame: frame)
         self.setupGameMenu()
@@ -30,25 +32,21 @@ import UIKit
         view.frame = CGRect(x: 0, y: 0, width: 250, height: 100) // this will be the size of the GameMenu
         //view.autoresizingMask = UIViewAutoresizing.FlexibleWidth // | UIViewAutoresizing.FlexibleHeight
         self.addSubview(view)
+        
+        SoundOnSwitch.setOn(GameAudio.sharedInstance.isSoundOn, animated: false)
     }
     
     
     func loadFromNib() -> UIView {
-        let bundle = NSBundle(forClass: self.dynamicType)
+        let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: nibName, bundle: bundle)
         //liveDebugLog(bundle.bundlePath)
-        let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
+        let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         return view
     }
     
-    @IBAction func toggleSound(sender: UISwitch, forEvent event: UIEvent) {
-                GameAudio.sharedInstance.toggleMuteBackGroundMusic()
+    @IBAction func toggleSound(_ sender: UISwitch, forEvent event: UIEvent) {
+                // if button not isOn mute should be true
+                GameAudio.sharedInstance.setSoundOn(sender.isOn)
     }
-    
-//    @IBAction func toggleSound(sender: UISwitch, forEvent event: UIEvent) {
-//        GameAudio.sharedInstance.pausedBackgroundMusic()
-//    }
-//    @IBAction func toggleSound(sender: AnyObject) {
-//        GameAudio.sharedInstance.pausedBackgroundMusic()
-//    }
 }

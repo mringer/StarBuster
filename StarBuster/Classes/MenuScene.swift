@@ -12,12 +12,12 @@ import SpriteKit
 class MenuScene:SKScene {
     
     //MARK: - Private class contant
-    private let background = Background()
-    private let gameTitle = GameTitle()
+    fileprivate let background = Background()
+    fileprivate let gameTitle = GameTitle()
     
-    private let gameTitleShip = GameTitleShip()
-    private let gameTitlePlanet = GameTitlePlanet()
-    private let playButton = PlayButton()
+    fileprivate let gameTitleShip = GameTitleShip()
+    fileprivate let gameTitlePlanet = GameTitlePlanet()
+    fileprivate let playButton = PlayButton()
     
     //MARK: - Private class variable
 //    private var sceneLabel = SKLabelNode()
@@ -31,13 +31,13 @@ class MenuScene:SKScene {
         super.init(size: size)
     }
     
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         self.setupMenuScrene()
         GameAudio.sharedInstance.playBackgroundMusic(fileName: Music.Game)
     }
     
     //MARK: - Setup
-    private func setupMenuScrene(){
+    fileprivate func setupMenuScrene(){
         //Set the background color to black
         self.backgroundColor = Colors.colorFromRGB(rgbValue: Colors.Background)
         self.addChild(self.background)
@@ -48,15 +48,15 @@ class MenuScene:SKScene {
     }
     
     //MARK: - Update
-    override func update(currentTime: NSTimeInterval){
+    override func update(_ currentTime: TimeInterval){
     }
     
     //MARK: Touch Events
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch:UITouch = touches.first! as UITouch
-        let touchLocation = touch.locationInNode(self)
+        let touchLocation = touch.location(in: self)
         
-        if self.playButton.containsPoint(touchLocation){
+        if self.playButton.contains(touchLocation){
             if kDebug{
                 print("MenuScene: Loading Game Scene.")
             }
@@ -65,9 +65,9 @@ class MenuScene:SKScene {
         }
     }
     //MARK: -  Load Scene
-    private func loadGameScene() {
+    fileprivate func loadGameScene() {
         let gameScene = GameScene(size: kViewSize)
-        let transition = SKTransition.fadeWithColor(SKColor.blackColor(), duration: 0.25)
+        let transition = SKTransition.fade(with: SKColor.black, duration: 0.25)
         self.view?.presentScene(gameScene, transition: transition)
     }
 }

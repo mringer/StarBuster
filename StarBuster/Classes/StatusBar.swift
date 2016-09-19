@@ -10,10 +10,10 @@ import SpriteKit
 
 class StatusBar:SKNode {
     // MARK: - Private Class Variables
-    private var statusBarBackground = SKSpriteNode()
-    private var scoreLabel = SKLabelNode()
-    private var starsCollectedIcon = SKSpriteNode()
-    private var starsCollectedLabel = SKLabelNode()
+    fileprivate var statusBarBackground = SKSpriteNode()
+    fileprivate var scoreLabel = SKLabelNode()
+    fileprivate var starsCollectedIcon = SKSpriteNode()
+    fileprivate var starsCollectedLabel = SKLabelNode()
     
     
     // MARK: - Internal Class Constants
@@ -38,19 +38,19 @@ class StatusBar:SKNode {
     }
     
     //MARK: - Setup
-    private func setupStatusBar() {
+    fileprivate func setupStatusBar() {
         
     }
     
-    private func setupStatusBarBackground() {
+    fileprivate func setupStatusBarBackground() {
         // Make a GCRect that is as wide as the screen and 5% of the height of the screen
-        let statusBarBackgoundSize = CGSizeMake(kViewSize.width, kViewSize.height * 0.05)
+        let statusBarBackgoundSize = CGSize(width: kViewSize.width, height: kViewSize.height * 0.05)
         
         // Make a sprite color that is black in color and the size of the statusBarBackground
-        self.statusBarBackground = SKSpriteNode(color: SKColor.blackColor(), size: statusBarBackgoundSize)
+        self.statusBarBackground = SKSpriteNode(color: SKColor.black, size: statusBarBackgoundSize)
         
         // Make the anchor point 0,0 so that it is postioned to the lower leftcorner
-        self.statusBarBackground.anchorPoint = CGPointZero
+        self.statusBarBackground.anchorPoint = CGPoint.zero
     
         // Position the status bar at the left edge and 95% up the screen
         self.statusBarBackground.position = CGPoint(x:0, y: kViewSize.height * 0.95)
@@ -61,20 +61,20 @@ class StatusBar:SKNode {
         self.addChild(statusBarBackground)
     }
     
-    private func setupStatusBarScore(score: Int) {
-        let scoreText = GameFonts.sharedInstance.createLabel(string: "Score:", labelType: GameFonts.LabelType.StatusBar)
+    fileprivate func setupStatusBarScore(_ score: Int) {
+        let scoreText = GameFonts.sharedInstance.createLabel(string: "Score:", labelType: GameFonts.LabelType.statusBar)
         scoreText.position = CGPoint(x:self.statusBarBackground.size.width * 0.6, y: self.statusBarBackground.size.height / 2)
         self.statusBarBackground.addChild(scoreText)
         
         // Score Lable
-        self.scoreLabel = GameFonts.sharedInstance.createLabel(string: String(score), labelType: GameFonts.LabelType.StatusBar)
+        self.scoreLabel = GameFonts.sharedInstance.createLabel(string: String(score), labelType: GameFonts.LabelType.statusBar)
         let offsetX = self.statusBarBackground.size.width * 0.75
         let offsetY = self.statusBarBackground.size.height / 2
         self.scoreLabel.position = CGPoint(x: offsetX, y: offsetY)
         self.statusBarBackground.addChild(self.scoreLabel)
     }
     
-    private func setupStatusBarStarsCollected(collected collected: Int) {
+    fileprivate func setupStatusBarStarsCollected(collected: Int) {
         // Collected stars icon
         self.starsCollectedIcon = GameTextures.sharedInstance.spriteWithName(name: SpriteName.StarIcon)
         let starOffsetX = self.statusBarBackground.size.width / 2 - self.starsCollectedIcon.size.width * 2
@@ -84,7 +84,7 @@ class StatusBar:SKNode {
         self.statusBarBackground.addChild(self.starsCollectedIcon)
 
         // Collected Stars Lable
-        self.starsCollectedLabel = GameFonts.sharedInstance.createLabel(string: String(collected), labelType: GameFonts.LabelType.StatusBar)
+        self.starsCollectedLabel = GameFonts.sharedInstance.createLabel(string: String(collected), labelType: GameFonts.LabelType.statusBar)
         let labelOffsetX = self.statusBarBackground.size.width / 2
         let lableOffsetY = self.statusBarBackground.size.height / 2
         self.starsCollectedLabel.position = CGPoint(x: labelOffsetX, y: lableOffsetY)
@@ -92,32 +92,32 @@ class StatusBar:SKNode {
         self.statusBarBackground.addChild(self.starsCollectedLabel)
     }
     
-    private func setupPauseButton() {
+    fileprivate func setupPauseButton() {
         self.addChild(self.pauseButton)
     }
     
     // MARK: - Public Functions
-    func updateScore(score score: Int) {
+    func updateScore(score: Int) {
         self.scoreLabel.text = String(score)
     }
     
-    func updateStarsCollected(collected collected: Int) {
+    func updateStarsCollected(collected: Int) {
         self.starsCollectedLabel.text = String(collected)
-        self.starsCollectedIcon.runAction(self.animateBounce())
-        self.starsCollectedLabel.runAction(self.animateBounce())
-        self.scoreLabel.runAction(self.animateBounce())
+        self.starsCollectedIcon.run(self.animateBounce())
+        self.starsCollectedLabel.run(self.animateBounce())
+        self.scoreLabel.run(self.animateBounce())
     }
     
-    func updateLives(lives lives: Int) {
+    func updateLives(lives: Int) {
         // First clear all sprites
-        self.statusBarBackground.enumerateChildNodesWithName( SpriteName.PlayerLives, usingBlock: {
+        self.statusBarBackground.enumerateChildNodes( withName: SpriteName.PlayerLives, using: {
             node,  _ in
             if let livesSprite = node as? SKSpriteNode {
                 livesSprite.removeFromParent()
             }
         })
         //
-        self.statusBarBackground.enumerateChildNodesWithName( SpriteName.LivesLabel, usingBlock: {
+        self.statusBarBackground.enumerateChildNodes( withName: SpriteName.LivesLabel, using: {
             node, _ in
             if let livesLabel = node as? SKLabelNode {
                 if livesLabel.name == SpriteName.LivesLabel {
@@ -145,7 +145,7 @@ class StatusBar:SKNode {
             self.statusBarBackground.addChild(livesSprite)
             
             // Lives Lable
-            let livesLabel = GameFonts.sharedInstance.createLabel(string: "x"+String(lives), labelType: GameFonts.LabelType.StatusBar)
+            let livesLabel = GameFonts.sharedInstance.createLabel(string: "x"+String(lives), labelType: GameFonts.LabelType.statusBar)
             let offsetX = livesSprite.size.width + livesSprite.size.width * 1.5
             livesLabel.position = CGPoint(x: offsetX, y: offsetY)
             livesLabel.name = SpriteName.LivesLabel
@@ -154,8 +154,8 @@ class StatusBar:SKNode {
     }
     
     func animateBounce() -> SKAction {
-        let scaleUp = SKAction.scaleTo(1.5, duration: 0.12)
-        let scaleNormal = SKAction.scaleTo(1.0, duration: 0.12)
+        let scaleUp = SKAction.scale(to: 1.5, duration: 0.12)
+        let scaleNormal = SKAction.scale(to: 1.0, duration: 0.12)
         let scaleSequence = SKAction.sequence([scaleUp, scaleNormal])
         return scaleSequence
     }

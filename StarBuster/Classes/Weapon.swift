@@ -12,12 +12,12 @@ class Weapon:SKSpriteNode {
     
     // MARK: - Public enum
     internal enum WeaponType {
-        case Laser
+        case laser
     }
     
     // MARK: - Public class variables
     internal var drift = CGFloat()
-    internal var weaponType = WeaponType.Laser
+    internal var weaponType = WeaponType.laser
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -32,23 +32,23 @@ class Weapon:SKSpriteNode {
         var size = CGSize()
         
         switch type {
-        case WeaponType.Laser:
+        case WeaponType.laser:
             // TODO: - replace with a laser sprite
             size = CGSize(width: 2.0, height: 5.0)
         }
         
-        self.init(texture: nil, color: SKColor.redColor(), size: size)
-        self.color = SKColor.redColor()
+        self.init(texture: nil, color: SKColor.red, size: size)
+        self.color = SKColor.red
         self.setupWeapon()
         self.setupWeaponPhysics()
     }
     
     // MARK: - Setup
-    private func setupWeapon(){
+    fileprivate func setupWeapon(){
         
     }
     
-    private func setupWeaponPhysics() {
+    fileprivate func setupWeaponPhysics() {
         self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width / 2, center: self.anchorPoint)
         self.physicsBody?.categoryBitMask = Contact.Weapon // sets the type of sprite in AB collision coparrison
         self.physicsBody?.collisionBitMask = 0x0 // sets collisions with the edge of the screen.
@@ -56,7 +56,7 @@ class Weapon:SKSpriteNode {
     }
     
     // MARK: - Update
-    func update(delta delta: NSTimeInterval) {
+    func update(delta: TimeInterval) {
         
         // Move verticallhy up the screen based on device type
         self.position.y =  kDeviceTablet ? self.position.y + CGFloat(delta * 60 *  6) : self.position.y + CGFloat(delta * 60 *  3)

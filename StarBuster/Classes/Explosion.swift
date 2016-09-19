@@ -11,7 +11,7 @@ import SpriteKit
 
 class Explosion:SKSpriteNode {
 
-    private var explosionFrames = [SKTexture]()
+    fileprivate var explosionFrames = [SKTexture]()
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -27,7 +27,7 @@ class Explosion:SKSpriteNode {
         let animatedAtlas = SKTextureAtlas(named: "explosion")
         var frames = [SKTexture]()
         
-        for ( i, _ ) in animatedAtlas.textureNames.enumerate() {
+        for ( i, _ ) in animatedAtlas.textureNames.enumerated() {
             // TODO: magic string
             let textureName = "explosion\(i+1)"
             frames.append(animatedAtlas.textureNamed(textureName))
@@ -35,15 +35,15 @@ class Explosion:SKSpriteNode {
         
         let firstFrame = frames[0]
         let size = firstFrame.size()
-        self.init(texture: firstFrame, color: SKColor.whiteColor(), size: size )
+        self.init(texture: firstFrame, color: SKColor.white, size: size )
         self.explosionFrames = frames
         self.position = position
     }
     
     func runAndExit() {
-        self.runAction(GameAudio.sharedInstance.soundExplosion) //, completion: {})
-        self.runAction(
-            SKAction.animateWithTextures(self.explosionFrames,
+        self.playSoundEffect(GameAudio.SoundEffect.Explosion) //, completion: {})
+        self.run(
+            SKAction.animate(with: self.explosionFrames,
                 timePerFrame: 0.1,
                 resize: false,
                 restore: true),

@@ -15,17 +15,17 @@ class GameTitlePlanet:SKSpriteNode{
         super.init(coder: aDecoder)
     }
     
-    private override init(texture:SKTexture?, color: UIColor, size: CGSize){
+    fileprivate override init(texture:SKTexture?, color: UIColor, size: CGSize){
         super.init(texture: texture, color: color, size: size)
     }
     
     convenience init() {
         let texture = GameTextures.sharedInstance.textureWithName(name: SpriteName.TitleGamePlanet)
-        self.init(texture: texture, color: SKColor.whiteColor(), size: texture.size())
+        self.init(texture: texture, color: SKColor.white, size: texture.size())
         self.setupGameTitlePlanet()
     }
     
-    private func setupGameTitlePlanet(){
+    fileprivate func setupGameTitlePlanet(){
         self.position = CGPoint(x: kViewSize.width / 2, y: kViewSize.height / 2)
         
     }

@@ -18,22 +18,22 @@ class GameFonts {
     
     // MARK: - Public enum
     internal enum LabelType:Int {
-        case StatusBar
-        case Bonus
-        case Message
+        case statusBar
+        case bonus
+        case message
     }
     
     // MARK: - Private class constants
-    private let fontName = "Edit Undo BRK"
-    private let scoreSizePad:CGFloat = 24.0
-    private let scoreSizePhone:CGFloat = 16.0
-    private let bonusSizePad:CGFloat = 72.0
-    private let bonusSizePhone:CGFloat = 36.0
-    private let messageSizePad:CGFloat = 48.0
-    private let messageSizePhone:CGFloat = 24.0
+    fileprivate let fontName = "Edit Undo BRK"
+    fileprivate let scoreSizePad:CGFloat = 24.0
+    fileprivate let scoreSizePhone:CGFloat = 16.0
+    fileprivate let bonusSizePad:CGFloat = 72.0
+    fileprivate let bonusSizePhone:CGFloat = 36.0
+    fileprivate let messageSizePad:CGFloat = 48.0
+    fileprivate let messageSizePhone:CGFloat = 24.0
     
     // MARK: - Private class variables
-    private var label = SKLabelNode()
+    fileprivate var label = SKLabelNode()
     
     // MARK: - Init
     init() {
@@ -41,27 +41,27 @@ class GameFonts {
     }
     
     // MARK: - Setup
-    private func setupLable() {
+    fileprivate func setupLable() {
         self.label = SKLabelNode(fontNamed: self.fontName)
-        self.label.verticalAlignmentMode = SKLabelVerticalAlignmentMode.Center
+        self.label.verticalAlignmentMode = SKLabelVerticalAlignmentMode.center
     }
     
     // MARK: - Label creation
-    func createLabel(string string: String, labelType: LabelType ) -> SKLabelNode {
+    func createLabel(string: String, labelType: LabelType ) -> SKLabelNode {
         let  copiedLable = self.label.copy() as! SKLabelNode
         switch labelType {
-        case LabelType.StatusBar:
-            copiedLable.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
+        case LabelType.statusBar:
+            copiedLable.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
             copiedLable.fontColor = Colors.colorFromRGB(rgbValue: Colors.FontScore)
             copiedLable.fontSize = kDeviceTablet ? self.scoreSizePad : self.scoreSizePhone
             copiedLable.text = string
-        case LabelType.Bonus:
-            copiedLable.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
+        case LabelType.bonus:
+            copiedLable.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.center
             copiedLable.fontColor = Colors.colorFromRGB(rgbValue: Colors.FontBonus)
             copiedLable.fontSize = kDeviceTablet ? self.scoreSizePad : self.scoreSizePhone
             copiedLable.text = string
-        case LabelType.Message:
-            copiedLable.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Center
+        case LabelType.message:
+            copiedLable.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.center
             copiedLable.fontColor = Colors.colorFromRGB(rgbValue: Colors.FontScore)
             copiedLable.fontSize = kDeviceTablet ? self.scoreSizePad : self.scoreSizePhone
             copiedLable.text = string
@@ -72,10 +72,10 @@ class GameFonts {
     }
     
     //MARK: - Actions
-    func animateFloatingLables(node node:SKNode) -> SKAction {
-        let action = SKAction.runBlock({
-            node.runAction(SKAction.fadeInWithDuration(0.1), completion: {
-                node.runAction(SKAction.moveToY(node.position.y + node.frame.size.height * 2, duration: 0.1), completion: {
+    func animateFloatingLables(node:SKNode) -> SKAction {
+        let action = SKAction.run({
+            node.run(SKAction.fadeIn(withDuration: 0.1), completion: {
+                node.run(SKAction.moveTo(y: node.position.y + node.frame.size.height * 2, duration: 0.1), completion: {
                     node.removeFromParent()
                 })
             })

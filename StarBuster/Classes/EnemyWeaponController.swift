@@ -11,10 +11,10 @@ import SpriteKit
 class EnemyWeaponController:SKNode {
     
     // MARK: - Private class variables
-    private var firingWeapons = true // TODO:
-    private var movingWeapons = true // TODO:
-    private var frameCount = 0.0
-    private var weaponArray:[EnemyWeapon] = [EnemyWeapon]()
+    fileprivate var firingWeapons = true // TODO:
+    fileprivate var movingWeapons = true // TODO:
+    fileprivate var frameCount = 0.0
+    fileprivate var weaponArray:[EnemyWeapon] = [EnemyWeapon]()
     
     // MARK: - Init
     required init?(coder aDecoder: NSCoder) {
@@ -33,12 +33,12 @@ class EnemyWeaponController:SKNode {
         }
     }
     
-    private func setupWeaponController() {
+    fileprivate func setupWeaponController() {
         ///self.weaponArray = [EnemyWeapon]()
     }
     
     // MARK: - Update
-    func update(enemyController:EnemyController, delta: NSTimeInterval) {
+    func update(_ enemyController:EnemyController, delta: TimeInterval) {
         
         
         //Move the weapons on screen
@@ -50,7 +50,7 @@ class EnemyWeaponController:SKNode {
             }
         }
         
-        for (_, child) in enemyController.children.enumerate() {
+        for (_, child) in enemyController.children.enumerated() {
             if let enemy = child as? Enemy {
                 // Is it time to fire the guns?
                 if self.firingWeapons {
@@ -79,7 +79,7 @@ class EnemyWeaponController:SKNode {
         self.movingWeapons = false
     }
     
-    private func gameOver() {
+    fileprivate func gameOver() {
         for node in self.children {
             if let meteor = node as? Meteor {
                 meteor.gameOver()

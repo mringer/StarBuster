@@ -21,7 +21,7 @@ class CruiserFromRight: EnemyBehaviors {
         self.hitPoints = 5     // set the number of hits required to destroy the enemy
     }
     
-    func spawn(enemy:Enemy, parent:EnemyController){
+    func spawn(_ enemy:Enemy, parent:EnemyController){
         let enemyCopy = enemy.copy() as! SKSpriteNode
         // X Axis
         let startX = kViewSize.width + enemy.size.width // off stage left
@@ -32,7 +32,7 @@ class CruiserFromRight: EnemyBehaviors {
         parent.addChild(enemyCopy)
     }
     
-    func update(enemy:Enemy, delta: NSTimeInterval){
+    func update(_ enemy:Enemy, delta: TimeInterval){
         // Move from right to left based on device type.
         enemy.position.x =  kDeviceTablet ? enemy.position.x - CGFloat(delta * 60 *  2) : enemy.position.x - CGFloat(delta * 60 *  1)
         // Add the drift to position y
@@ -48,7 +48,7 @@ class CruiserFromRight: EnemyBehaviors {
         
     }
     
-    func destroy(enemy:Enemy){
+    func destroy(_ enemy:Enemy){
         
     }
     

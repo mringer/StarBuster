@@ -10,36 +10,36 @@ import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     //MARK: - Private class contant
-    private let gameNode = SKNode()
-    private let interfaceNode = SKNode()
-    private let background = Background()
-    private let startButton = StartButton()
-    private let player = Player()
-    private let meteorController = MeteorController()
-    private let bonusController = BonusController()
-    private let weaponController = WeaponController()
-    private let enemyWeaponController = EnemyWeaponController()
-    private let gameMenu = GameMenu(frame: CGRect(x: 0, y: 0, width: 400, height: 35))
+    fileprivate let gameNode = SKNode()
+    fileprivate let interfaceNode = SKNode()
+    fileprivate let background = Background()
+    fileprivate let startButton = StartButton()
+    fileprivate let player = Player()
+    fileprivate let meteorController = MeteorController()
+    fileprivate let bonusController = BonusController()
+    fileprivate let weaponController = WeaponController()
+    fileprivate let enemyWeaponController = EnemyWeaponController()
+    fileprivate let gameMenu = GameMenu(frame: CGRect(x: 0, y: 0, width: 400, height: 35))
     
     
-    private let enemyController = EnemyController(enemiesArray: [Enemy(behaviors: CruiserFromRight()), Enemy(behaviors: CruiserFromLeft()), Enemy(behaviors: DiveBomber())])
+    fileprivate let enemyController = EnemyController(enemiesArray: [Enemy(behaviors: CruiserFromRight()), Enemy(behaviors: CruiserFromLeft()), Enemy(behaviors: DiveBomber())])
     
     
     //private let enemyController = EnemyController(enemiesArray: [Enemy(behaviors: DiveBomber())])
     
-    private enum GameState:Int {
-        case Tutorial
-        case Running
-        case Paused
-        case GameOver
+    fileprivate enum GameState:Int {
+        case tutorial
+        case running
+        case paused
+        case gameOver
     }
     
     // Private Variables
-    private var state = GameState.Tutorial
-    private var lastUpdateTime:NSTimeInterval = 0.0
-    private var frameCount:NSTimeInterval = 0.0
-    private var statusBar = StatusBar()
-    private var previousState = GameState.Tutorial
+    fileprivate var state = GameState.tutorial
+    fileprivate var lastUpdateTime:TimeInterval = 0.0
+    fileprivate var frameCount:TimeInterval = 0.0
+    fileprivate var statusBar = StatusBar()
+    fileprivate var previousState = GameState.tutorial
     
     //MARK: - Init
     required init?(coder aDecoder: NSCoder ){
@@ -50,25 +50,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         super.init(size: size)
     }
     
-    override func didMoveToView(view: SKView) {
+    override func didMove(to view: SKView) {
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GameScene.pauseGame), name: "PauseGame", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(GameScene.resumeGame), name: "ResumeGame", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameScene.pauseGame), name: NSNotification.Name(rawValue: "PauseGame"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(GameScene.resumeGame), name: NSNotification.Name(rawValue: "ResumeGame"), object: nil)
         
         self.setupGameScene()
     }
     
     //MARK: - Setup
-    private func setupGameScene(){
+    fileprivate func setupGameScene(){
         //Set the background
-        self.backgroundColor = SKColor.blackColor()
+        self.backgroundColor = SKColor.black
 
-        self.physicsWorld.gravity = CGVectorMake(0,0)
+        self.physicsWorld.gravity = CGVector(dx: 0,dy: 0)
         self.physicsWorld.contactDelegate = self
         
         //Create Physics body for gameNode
-        let screenBounds = CGRectMake(-self.player.size.width / 2, 0, kViewSize.width + self.player.size.width, kViewSize.height)
-        gameNode.physicsBody = SKPhysicsBody(edgeLoopFromRect: screenBounds)
+        let screenBounds = CGRect(x: -self.player.size.width / 2, y: 0, width: kViewSize.width + self.player.size.width, height: kViewSize.height)
+        gameNode.physicsBody = SKPhysicsBody(edgeLoopFrom: screenBounds)
         
         // Create boundary using ScreenBounds
         self.gameNode.physicsBody?.categoryBitMask = Contact.Scene
@@ -96,16 +96,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     //MARK: - Update
-    override func update(currentTime: NSTimeInterval){
+    override func update(_ currentTime: TimeInterval){
         // Calculate delta
         let delta = currentTime - self.lastUpdateTime
         self.lastUpdateTime = currentTime
         
         switch self.state {
-            case GameState.Tutorial:
+            case GameState.tutorial:
                 return
         
-            case GameState.Running:
+            case GameState.running:
                 if self.player.lives > 0 {
                     self.player.update()
                     self.meteorController.update(delta: delta)
@@ -125,18 +125,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     // Player is out of lives
                     self.switchToGameOver()
                 }
-            case GameState.Paused:
+            case GameState.paused:
                 return
             
-            case GameState.GameOver:
+            case GameState.gameOver:
                 return
         }
         self.player.update()
     }
     
     // MARK: - Contact
-    func didBeginContact(contact: SKPhysicsContact) {
-        if self.state != GameState.Running {
+    func didBegin(_ contact: SKPhysicsContact) {
+        if self.state != GameState.running {
             return
         } else {
             
@@ -211,26 +211,26 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     // MARK: - Touch events
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch:UITouch = touches.first! as UITouch
-        let touchLocation = touch.locationInNode(self)
+        let touchLocation = touch.location(in: self)
         
         switch self.state {
-            case GameState.Tutorial:
-                if self.startButton.containsPoint(touchLocation) {
+            case GameState.tutorial:
+                if self.startButton.contains(touchLocation) {
                         self.startButton.tapped()
                         self.switchToRunning()
                 }
                 
                 // TODO: just pause the game on app suspend.
-                if self.statusBar.pauseButton.containsPoint(touchLocation) {
+                if self.statusBar.pauseButton.contains(touchLocation) {
                     self.pauseButtonPressed()
                 }
                 
                 return
             
-            case GameState.Running:
-                if self.statusBar.pauseButton.containsPoint(touchLocation) {
+            case GameState.running:
+                if self.statusBar.pauseButton.contains(touchLocation) {
                     self.pauseButtonPressed()
                     return // TODO: -
                 } else {
@@ -238,13 +238,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     self.player.updateTargetLocation(newLocation: touchLocation)
                 }
             
-            case GameState.Paused:
-                if self.statusBar.pauseButton.containsPoint(touchLocation) {
+            case GameState.paused:
+                if self.statusBar.pauseButton.contains(touchLocation) {
                     self.pauseButtonPressed()
                     return
                 }
             
-            case GameState.GameOver:
+            case GameState.gameOver:
                 return
         }
         
@@ -253,16 +253,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     
     //MARK: - Load Scene
-    private func loadGameOverScene(){
+    fileprivate func loadGameOverScene(){
         //let gameOverScene = GameOverScene(size: kViewSize)
         let gameOverScene = GameOverScene(size: kViewSize, score: self.player.score, stars: self.player.starsCollected, streak: self.player.highStreak)
-        let transition = SKTransition.fadeWithColor(SKColor.blackColor(), duration: 0.25)
+        let transition = SKTransition.fade(with: SKColor.black, duration: 0.25)
         self.view?.presentScene(gameOverScene, transition: transition)
         
     }
     
-    private func switchToRunning() {
-        self.state = GameState.Running
+    fileprivate func switchToRunning() {
+        self.state = GameState.running
         self.player.enableMovement()
         
         // Move player to start position
@@ -278,18 +278,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     //
-    private func switchToPaused() {
+    fileprivate func switchToPaused() {
         self.previousState = self.state
-        self.state = GameState.Paused
+        self.state = GameState.paused
     }
     
     
-    @objc private func switchToResume() {
+    @objc fileprivate func switchToResume() {
         self.state = self.previousState
     }
     
-    private func switchToGameOver() {
-        self.state = GameState.GameOver
+    fileprivate func switchToGameOver() {
+        self.state = GameState.gameOver
         
         // Disable player movement
         self.player.disableMovement()
@@ -305,11 +305,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.enemyController.stopSendingEnemies()
         self.enemyWeaponController.stopFiringWeapons()
         // Switch to game over scene after 1.5 seconds
-        self.runAction(SKAction.waitForDuration(1.5), completion: { self.loadGameOverScene() })
+        self.run(SKAction.wait(forDuration: 1.5), completion: { self.loadGameOverScene() })
     }
     
     // MARK: - Scoring function
-    private func updateDistanceTic() {
+    fileprivate func updateDistanceTic() {
         self.player.updatePlayerScore(score: 1)
         self.statusBar.updateScore(score: self.player.score)
     }
@@ -320,16 +320,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func resumeGame() {
         // Run a timer that resumes the game after 1 second
-        NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(switchToResume), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(switchToResume), userInfo: nil, repeats: false)
     }
     
     // MARK: - Pause Button Actions
-    private func pauseButtonPressed() {
+    fileprivate func pauseButtonPressed() {
         self.statusBar.pauseButton.tapped()
         
         if self.statusBar.pauseButton.getPausedState() {
             // Pause the gameNode
-             self.gameNode.paused = true
+             self.gameNode.isPaused = true
             
             // Set the state to Paused
              self.switchToPaused()
@@ -342,7 +342,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         } else {
             // Resume the game
-            self.gameNode.paused = false
+            self.gameNode.isPaused = false
             // Switch state to Running without doing the other in switchToResume()
             self.switchToResume()
             
@@ -356,22 +356,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // MARK: - Scene Animation
     func flashBackground() {
-        let colorFlash = SKAction.runBlock( {
+        let colorFlash = SKAction.run( {
             self.backgroundColor = Colors.colorFromRGB(rgbValue: Colors.Magic)
-            self.runAction(SKAction.waitForDuration(0.25), completion: {
+            self.run(SKAction.wait(forDuration: 0.25), completion: {
                 self.backgroundColor = Colors.colorFromRGB(rgbValue: Colors.Background)
             })
         })
-        self.runAction(colorFlash)
+        self.run(colorFlash)
     }
     
     func shakeScreen() {
         let shake = SKAction.screenShakeWithNode(self.gameNode, amount: CGPoint(x:20, y:15), oscillations: 10, duration: 0.75)
-        self.runAction(shake)
+        self.run(shake)
     }
     
     // MARK: - deinit
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 }

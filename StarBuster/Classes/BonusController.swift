@@ -11,14 +11,14 @@ import SpriteKit
 class BonusController:SKNode {
     
     // MARK: - Private class constants
-    private let star = Bonus(behaviors: Star())
-    private let life = Bonus(behaviors: OneUp())
+    fileprivate let star = Bonus(behaviors: Star())
+    fileprivate let life = Bonus(behaviors: OneUp())
     
     // MARK: - Private class variables
-    private var sendingBonuses = false
-    private var movingBonuses = false
-    private var frameCount = 0.0
-    private var bonusArray = [SKSpriteNode]()
+    fileprivate var sendingBonuses = false
+    fileprivate var movingBonuses = false
+    fileprivate var frameCount = 0.0
+    fileprivate var bonusArray = [SKSpriteNode]()
     
     // MARK: - Init
     required init?(coder aDecoder: NSCoder) {
@@ -32,12 +32,12 @@ class BonusController:SKNode {
     }
     
     // MARK: - Setup
-    private func setupBonusController() {
+    fileprivate func setupBonusController() {
         bonusArray = [star, life]
     }
     
     // MARK: - Update
-    func update(delta delta:NSTimeInterval) {
+    func update(delta:TimeInterval) {
         // Is it time to send the Bonus?
         if self.sendingBonuses {
             self.frameCount += delta
@@ -59,7 +59,7 @@ class BonusController:SKNode {
     }
     
     // MARK: - Spawn
-    private func spawnBonus() {
+    fileprivate func spawnBonus() {
         if self.sendingBonuses {
             let startX = RandomFloatRange(min: 0, max: kViewSize.width)
             let startY = kViewSize.height * 1.25

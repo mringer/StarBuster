@@ -15,8 +15,8 @@ class GameTextures {
         return GameTexturesSharedInstance
     }
     // MARK: - Private class variables
-    private var interfaceSpritesAtlas = SKTextureAtlas()
-    private var gameSpriteAtlas = SKTextureAtlas()
+    fileprivate var interfaceSpritesAtlas = SKTextureAtlas()
+    fileprivate var gameSpriteAtlas = SKTextureAtlas()
     
     // MARK: - Init
     init(){
@@ -25,11 +25,11 @@ class GameTextures {
     }
     
     // MARK: - public convenience functions
-    func textureWithName(name name:String) -> SKTexture {
+    func textureWithName(name:String) -> SKTexture {
         return SKTexture(imageNamed: name)
     }
     
-    func spriteWithName(name name:String) -> SKSpriteNode{
+    func spriteWithName(name:String) -> SKSpriteNode{
         return SKSpriteNode(imageNamed: name)
     }
 }

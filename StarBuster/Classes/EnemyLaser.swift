@@ -11,12 +11,12 @@ import SpriteKit
 class EnemyLaser:EnemyWeaponBehaviors {
     
     var texture:SKTexture?  = nil
-    var color:SKColor      = SKColor.greenColor()
+    var color:SKColor      = SKColor.green
     var size:CGSize        = CGSize(width: 2.0,height: 5.0)
     
-    private var laserCount = 1
+    fileprivate var laserCount = 1
     
-    func spawn(weapon:EnemyWeapon, enemy:Enemy, controller:EnemyWeaponController) {
+    func spawn(_ weapon:EnemyWeapon, enemy:Enemy, controller:EnemyWeaponController) {
         
         for i in 1...laserCount {
 
@@ -34,7 +34,7 @@ class EnemyLaser:EnemyWeaponBehaviors {
         }
     }
     
-    func update(weapon:EnemyWeapon, delta: NSTimeInterval) {
+    func update(_ weapon:EnemyWeapon, delta: TimeInterval) {
         // Move verticallhy up the screen based on device type
         weapon.position.y =  kDeviceTablet ? weapon.position.y - CGFloat(delta * 60 *  4) : weapon.position.y - CGFloat(delta * 60 *  2)
         
@@ -43,7 +43,7 @@ class EnemyLaser:EnemyWeaponBehaviors {
         }
     }
     
-    func destroy(weapon:EnemyWeapon) {
+    func destroy(_ weapon:EnemyWeapon) {
     
     }
 }

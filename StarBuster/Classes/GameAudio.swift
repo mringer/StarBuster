@@ -13,6 +13,16 @@ class Music {
     class var Game:String { return "GameMusic.mp3" }
 }
 
+extension SKSpriteNode {
+    
+    // MARK: - Sound Effects
+    func playSoundEffect(_ soundEffect:GameAudio.SoundEffect) {
+        if(GameAudio.sharedInstance.isSoundOn){
+            self.run(GameAudio.sharedInstance.getSoundEffect(name: soundEffect))
+        }
+    }
+}
+
 private class SoundEffects {
     // Shields
     class var ShieldUp:String   { return "ShieldUp.caf" }
@@ -42,25 +52,48 @@ class GameAudio {
     }
     
     // MARK: - Private class variables
-    private var musicPlayer = AVAudioPlayer()
-    private var cachedVolume:Float = 0
-    
-    // MARK: - Private class constants 
-    internal let soundShieldUp = SKAction.playSoundFileNamed(SoundEffects.ShieldUp, waitForCompletion: false)
-    internal let soundShieldDown = SKAction.playSoundFileNamed(SoundEffects.ShieldDown, waitForCompletion: false)
-    internal let soundButtonTap = SKAction.playSoundFileNamed(SoundEffects.ButtonTap, waitForCompletion: false)
-    internal let soundExplosion = SKAction.playSoundFileNamed(SoundEffects.Explosion, waitForCompletion: false)
-    internal let soundPickup = SKAction.playSoundFileNamed(SoundEffects.Pickup, waitForCompletion: false)
+    fileprivate var musicPlayer = AVAudioPlayer()
+    fileprivate var backroundMusic:String = Music.Game
+    fileprivate var soundOn = true;
+
+    // MARK: - class constants
+    fileprivate let soundShieldUp = SKAction.playSoundFileNamed(SoundEffects.ShieldUp, waitForCompletion: false)
+    fileprivate let soundShieldDown = SKAction.playSoundFileNamed(SoundEffects.ShieldDown, waitForCompletion: false)
+    fileprivate let soundButtonTap = SKAction.playSoundFileNamed(SoundEffects.ButtonTap, waitForCompletion: false)
+    fileprivate let soundExplosion = SKAction.playSoundFileNamed(SoundEffects.Explosion, waitForCompletion: false)
+    fileprivate let soundPickup = SKAction.playSoundFileNamed(SoundEffects.Pickup, waitForCompletion: false)
     
     // MARK: - Public class variables 
-    internal var initialized = false
+    var initialized = false
+    
+    enum SoundEffect {
+        case ShieldUp
+        case ShieldDown
+        case ButtonTap
+        case Explosion
+        case Pickup
+    }
+    
+    var isSoundOn:Bool {
+        get {return soundOn}
+    }
+    
+    fileprivate init() {
+        self.soundOn = GameSettings.sharedInstance.getSoundOn()
+    }
     
     // MARK: - Music Player
-    func playBackgroundMusic(fileName fileName:String) {
-        let music = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource(fileName, ofType: nil)!)
+    func playBackgroundMusic(fileName:String) {
+        
+        if(!self.soundOn) { // if the sound is off don't set up the audio player
+            return
+        }
+        
+        self.backroundMusic = fileName
+        let music = URL(fileURLWithPath: Bundle.main.path(forResource: fileName, ofType: nil)!)
         
         do {
-            self.musicPlayer = try AVAudioPlayer(contentsOfURL: music)
+            self.musicPlayer = try AVAudioPlayer(contentsOf: music)
         } catch let error as NSError {
             if kDebug {
                 print(error)
@@ -75,30 +108,50 @@ class GameAudio {
         self.initialized = true
     }
     
-    func toggleMuteBackGroundMusic() {
-        if(self.musicPlayer.volume != 0) {
-            self.cachedVolume = self.musicPlayer.volume
-            self.musicPlayer.volume = 0
+    func getSoundEffect(name:SoundEffect) -> SKAction {
+        
+        switch name {
+        case SoundEffect.ShieldUp:
+            return self.soundShieldUp
+        case SoundEffect.ShieldDown:
+            return self.soundShieldDown
+        case SoundEffect.ButtonTap:
+            return self.soundButtonTap
+        case SoundEffect.Explosion:
+            return self.soundExplosion
+        case SoundEffect.Pickup:
+            return self.soundPickup
+        }
+        
+    }
+    
+    func setSoundOn(_ on:Bool) {
+        self.soundOn = on
+        GameSettings.sharedInstance.saveSoundOn(on: on)
+        if(on) {
+            resumeBackgroundMusic()
         } else {
-            self.musicPlayer.volume = self.cachedVolume
+            pausedBackgroundMusic()
         }
     }
     
     func stopBackgroundMusic() {
-        if self.musicPlayer.playing {
+        if self.initialized && self.musicPlayer.isPlaying {
             self.musicPlayer.stop()
         }
     }
     
     func pausedBackgroundMusic() {
-        if self.musicPlayer.playing {
+        if self.initialized && self.musicPlayer.isPlaying {
             self.musicPlayer.pause()
         }
     }
     
     func resumeBackgroundMusic() {
-        if self.initialized {
+        if self.initialized && self.soundOn {
             self.musicPlayer.play()
+        } else {
+            self.playBackgroundMusic(fileName: self.backroundMusic)
         }
     }
 }
