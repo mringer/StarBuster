@@ -1,0 +1,5 @@
+language: objective-c
+osx_image: xcode8.0
+xcode_project: StarBuster.xcodeproj
+xcode_scheme: StarBuster
+xcode_sdk: iphonesimulator8.4
