@@ -38,6 +38,9 @@ class Explosion:SKSpriteNode {
         self.init(texture: firstFrame, color: SKColor.white, size: size )
         self.explosionFrames = frames
         self.position = position
+        self.zPosition = GameLayer.Explosion
+        
+        self.setScale(  kDeviceTablet ? 2.0 : 1.0 )
     }
     
     func runAndExit() {
@@ -49,5 +52,19 @@ class Explosion:SKSpriteNode {
                 restore: true),
             completion: { self.removeFromParent() }
         )
+    }
+}
+
+
+extension SKSpriteNode {
+    
+    func BigBoom(radius: CGFloat, count: Int) {
+        let position = self.position
+        for _ in 1...count {
+            let explosion = Explosion(position: position)
+            self.parent?.addChild(explosion)
+            explosion.position = CGPoint(x: self.position.x - RandomFloatRange(min: CGFloat(radius * -1), max: radius), y: self.position.y - RandomFloatRange(min: CGFloat(radius * -1), max: radius))
+            explosion.runAndExit()
+        }
     }
 }

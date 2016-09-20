@@ -87,11 +87,18 @@ class GameLayer {
     // Meteors
     class var Meteor:CGFloat            { return 1 }
     // Enemies 
-    class var Enemy:CGFloat             { return 2 }
+    class var EnemyWeapon:CGFloat       { return 2 }
+    class var Enemy:CGFloat             { return 2.1 }
     // Bonuses
     class var Bonus:CGFloat             { return 3 }
     // Player
-    class var Player:CGFloat            { return 4 }
+    class var PlayerWeapon:CGFloat      { return 4 }
+    class var Player:CGFloat            { return 4.1 }
+    
+    // Effects
+    class var Explosion:CGFloat         { return 4.5 }
+    class var Points:CGFloat            { return 4.6 }
+    
     // Interface
     class var InterfaceLow:CGFloat      { return 5 }
     class var InterfaceMid:CGFloat      { return 5.1 }

@@ -49,15 +49,6 @@ class EnemyController:SKNode {
                 self.frameCount = 0.0
             }
         }
-        
-        //Move the meteors on screen
-        if self.movingEnemies {
-            for node in self.children {
-                if let enemy = node as? Enemy {
-                    enemy.update(delta: delta)
-                }
-            }
-        }
     }
     
     // MARK: - Action function

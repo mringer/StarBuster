@@ -19,6 +19,8 @@ class OneUp:BonusBehaviors {
     func bonusPickedUpBy(_ player:Player, statusBar:StatusBar) {
         player.lives += 1
         statusBar.updateLives(lives: player.lives)
-        FloatLabel.spawn(player, value: "1UP!")
+        
+        let position = CGPoint(x: player.position.x, y: player.position.y + (player.texture?.size().height)!)
+        player.parent?.addChild(FloatLabel.spawn(position, text: "1UP!"))
     }
 }

@@ -48,6 +48,7 @@ class Bonus:SKSpriteNode {
         self.physicsBody?.categoryBitMask = Contact.Bonus
         self.physicsBody?.collisionBitMask = 0x0
         self.physicsBody?.contactTestBitMask = 0x0
+        self.zPosition = GameLayer.Bonus
     }
     
     // MARK: - Update

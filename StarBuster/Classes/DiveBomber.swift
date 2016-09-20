@@ -13,7 +13,7 @@ class DiveBomber: EnemyBehaviors {
     var texture:SKTexture
     var value:Int
     var hitPoints:Int
-    var weapons = [EnemyWeapon]()
+    var weapons:[EnemyWeapon] = [EnemyWeapon()]
     
     fileprivate var startX:CGFloat
     fileprivate var velocity = kDeviceTablet ? CGFloat(4) : CGFloat(2)
@@ -23,11 +23,11 @@ class DiveBomber: EnemyBehaviors {
         //self.texture = GameTextures.sharedInstance.textureWithName( name: SpriteName.EnemyCruiser )
         self.texture = GameTextures.sharedInstance.textureWithName( name: SpriteName.EnemyDiveBomber )
         self.value = 1500  // set the value for destroying the enemy
-        self.hitPoints = 20     // set the number of hits required to destroy the enemy
+        self.hitPoints = 10     // set the number of hits required to destroy the enemy
         self.startX = kViewSize.width / 2
     }
     
-    func spawn(_ enemy:Enemy, parent:EnemyController){
+    func spawn(_ enemy:Enemy) -> Enemy{
         let enemyCopy = enemy.copy() as! SKSpriteNode
         // X Axis
         self.startX = RandomFloatRange(min: 0, max: kViewSize.width)
@@ -36,7 +36,8 @@ class DiveBomber: EnemyBehaviors {
         // Copy from array
         enemyCopy.position = CGPoint(x: startX, y: startY)
         enemyCopy.name = SpriteName.EnemyDiveBomber
-        parent.addChild(enemyCopy)
+        
+        return enemyCopy as! Enemy
     }
     
     func update(_ enemy:Enemy, delta: TimeInterval){
@@ -55,7 +56,7 @@ class DiveBomber: EnemyBehaviors {
         enemy.position.x = enemy.position.x + velocity
         
         // Add the drift to position y
-        enemy.position.y = kDeviceTablet ? enemy.position.y - CGFloat(delta * 60 *  2) : enemy.position.y - CGFloat(delta * 60 *  1)
+        enemy.position.y = kDeviceTablet ? enemy.position.y - CGFloat(delta * 100 *  2) : enemy.position.y - CGFloat(delta * 100 *  1)
         
         if enemy.position.y < (0 - enemy.size.height) {
             enemy.removeFromParent()

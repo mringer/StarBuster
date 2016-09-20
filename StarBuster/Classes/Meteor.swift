@@ -71,6 +71,7 @@ class Meteor:SKSpriteNode {
         self.physicsBody?.categoryBitMask = Contact.Meteor
         self.physicsBody?.collisionBitMask = 0x0 // Igore collisions
         self.physicsBody?.contactTestBitMask = 0x0 // Ignore contact
+        self.zPosition = GameLayer.Meteor
     }
     
     // MARK: - Update
@@ -100,7 +101,9 @@ class Meteor:SKSpriteNode {
             if let p = player as Player? {
                 p.updatePlayerScore(score: self.value)
             }
-            FloatLabel.spawn(self, value: String(self.value))
+            // Display the point value lable and remove node 
+            let position = CGPoint(x: self.position.x, y: self.position.y - self.frame.size.height / 2 )
+            self.parent?.addChild(FloatLabel.spawn(position, text: String(self.value)))
             self.removeFromParent()
         }
     }

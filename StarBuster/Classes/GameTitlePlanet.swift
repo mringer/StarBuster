@@ -27,6 +27,6 @@ class GameTitlePlanet:SKSpriteNode{
     
     fileprivate func setupGameTitlePlanet(){
         self.position = CGPoint(x: kViewSize.width / 2, y: kViewSize.height / 2)
-        
+        self.zPosition = GameLayer.BackgroundHigh
     }
 }

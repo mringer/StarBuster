@@ -18,16 +18,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     fileprivate let meteorController = MeteorController()
     fileprivate let bonusController = BonusController()
     fileprivate let weaponController = WeaponController()
-    fileprivate let enemyWeaponController = EnemyWeaponController()
+    //fileprivate let enemyWeaponController = EnemyWeaponController()
     
     // TODO: Fix dimensions
     fileprivate let gameMenu = GameMenu(frame: CGRect(x: 0, y: 0, width: 400, height: 35))
     
     
-    //fileprivate let enemyController = EnemyController(enemiesArray: [Enemy(behaviors: CruiserFromRight()), Enemy(behaviors: CruiserFromLeft())]) // , Enemy(behaviors: DiveBomber())])
+    fileprivate let enemyController = EnemyController(enemiesArray: [
+        Enemy(behaviors: CruiserFromRight()),
+        Enemy(behaviors: CruiserFromLeft()),
+        Enemy(behaviors: DiveBomber())
+        ])
     
     
-    fileprivate let enemyController = EnemyController(enemiesArray: [ Enemy(behaviors: DiveBomber())])
+    //fileprivate let enemyController = EnemyController(enemiesArray: [ Enemy(behaviors: DiveBomber())])
     
     fileprivate enum GameState:Int {
         case tutorial
@@ -90,7 +94,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.gameNode.addChild(self.bonusController)
         self.gameNode.addChild(self.weaponController)
         self.gameNode.addChild(self.enemyController)
-        self.gameNode.addChild(self.enemyWeaponController)
+        //self.gameNode.addChild(self.enemyWeaponController)
         
         // Add interfaceNode to scene
         self.addChild(self.interfaceNode)
@@ -114,7 +118,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     self.bonusController.update(delta: delta)
                     self.weaponController.update(delta: delta, player: self.player)
                     self.enemyController.update(delta: delta)
-                    self.enemyWeaponController.update(self.enemyController, delta: delta)
+                    //self.enemyWeaponController.update(self.enemyController, delta: delta)
                     self.frameCount += delta
                 
                     // If frameCount is greater than 1.0
@@ -208,6 +212,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                         }
                     }
                 }
+                
+                if other.categoryBitMask == Contact.EnemyWeapon {
+                    if let enemy = other.node as? EnemyWeapon {
+                        // Remove the meteor from the screen
+                        if let weapon = weapon.node as? Weapon {
+                            weapon.hitWeapon()
+                            enemy.hitWeapon()
+                        }
+                    }
+                }
+
             }
         }
     }
@@ -237,6 +252,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     return // TODO: -
                 } else {
                     // Move the player ship to the touch location.
+                    //self.player
+                    self.weaponController.spawnWeapons(player: self.player)
                     self.player.updateTargetLocation(newLocation: touchLocation)
                 }
             
@@ -271,12 +288,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.player.updateTargetLocation(newLocation: self.startButton.position)
         self.startButton.fadeStartButton()
         self.background.setBackgroundOn(true)
-        //self.meteorController.setMeteorsOn(true)
+        self.meteorController.setMeteorsOn(true)
         self.weaponController.setWeaponsOn(true)
         self.enemyController.setEnemiesOn(true)
-        //self.enemyWeaponController.setWeaponsOn(true)
         // Start sending stars
-        //self.bonusController.setBonusesOn(true)
+        self.bonusController.setBonusesOn(true)
     }
     
     //
@@ -305,8 +321,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.bonusController.setBonusesOn(false)
         self.weaponController.setWeaponsOn(false)
         self.enemyController.setEnemiesOn(false)
-        self.enemyWeaponController.setWeaponsOn(false)
+
         // Switch to game over scene after 1.5 seconds
+        
         self.run(SKAction.wait(forDuration: 1.5), completion: { self.loadGameOverScene() })
     }
     

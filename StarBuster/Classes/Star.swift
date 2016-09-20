@@ -80,6 +80,8 @@ class Star:BonusBehaviors {
         }
         
         // Float the bonus on the screen
-        FloatLabel.spawn(player, value: bonus)
+        
+        let position = CGPoint(x: player.position.x, y: player.position.y + (player.texture?.size().height)!)
+        player.parent?.addChild(FloatLabel.spawn(position, text: bonus))
     }
 }

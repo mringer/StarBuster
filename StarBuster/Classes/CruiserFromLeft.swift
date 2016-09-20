@@ -13,7 +13,7 @@ class CruiserFromLeft: EnemyBehaviors {
     var texture:SKTexture
     var value:Int
     var hitPoints:Int
-    var weapons = [EnemyWeapon(behaviors: EnemyLaser())]
+    var weapons:[EnemyWeapon] = [EnemyMissile()]
     
     init() {
         self.texture = GameTextures.sharedInstance.textureWithName( name: SpriteName.EnemyCruiser )
@@ -21,7 +21,7 @@ class CruiserFromLeft: EnemyBehaviors {
         self.hitPoints = 5     // set the number of hits required to destroy the enemy
     }
     
-    func spawn(_ enemy:Enemy, parent:EnemyController){
+    func spawn(_ enemy:Enemy) -> Enemy {
         let enemyCopy = enemy.copy() as! SKSpriteNode
         // X Axis
         let startX = 0 - enemy.size.width // off stage left
@@ -31,7 +31,7 @@ class CruiserFromLeft: EnemyBehaviors {
         enemyCopy.position = CGPoint(x: startX, y: startY)
         enemyCopy.xScale = fabs(enemyCopy.xScale) * -1.0 // flip ship orentation to facing right
         enemyCopy.name = "CruiserFromLeft"
-        parent.addChild(enemyCopy)
+        return enemyCopy as! Enemy
     }
     
     func update(_ enemy:Enemy, delta: TimeInterval){

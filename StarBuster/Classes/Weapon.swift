@@ -53,6 +53,7 @@ class Weapon:SKSpriteNode {
         self.physicsBody?.categoryBitMask = Contact.Weapon // sets the type of sprite in AB collision coparrison
         self.physicsBody?.collisionBitMask = 0x0 // sets collisions with the edge of the screen.
         self.physicsBody?.contactTestBitMask = Contact.Meteor | Contact.Enemy // determines whitch other sprites trigger collision events
+        self.zPosition = GameLayer.PlayerWeapon
     }
     
     // MARK: - Update

@@ -14,7 +14,7 @@ protocol EnemyBehaviors {
     var hitPoints:Int               {get}
     var weapons:[EnemyWeapon]       {get}
     
-    func spawn(_ enemy:Enemy, parent:EnemyController)
+    func spawn(_ enemy:Enemy ) -> Enemy
     func update(_ enemy:Enemy, delta: TimeInterval)
     func destroy(_ enemy:Enemy)
     
@@ -31,7 +31,7 @@ class DefaultEnemyBehaviors:EnemyBehaviors {
     }
     
     // TODO: - throw runtime or make nilable
-    func spawn(_ enemy:Enemy, parent:EnemyController){}
+    func spawn(_ enemy:Enemy ) -> Enemy { return Enemy() }
     func update(_ enemy:Enemy, delta: TimeInterval){}
     func destroy(_ enemy:Enemy){}
     func new() -> EnemyBehaviors {
@@ -44,8 +44,7 @@ class Enemy:SKSpriteNode {
     // MARK: - Enmy implementation
     var value:Int = 0
     var hitPoints:Int = 0
-    
-    //enemy: Enemy(), weapons:[EnemyWeapon]()) //this may cause the weapons to be removed on destruction....
+    var refreshRate:Double = 0.03
     
     var behaviors:EnemyBehaviors = DefaultEnemyBehaviors()
     
@@ -70,18 +69,36 @@ class Enemy:SKSpriteNode {
     
     fileprivate func setupEnemyPhysics() {
         if let texture = self.texture as SKTexture? {
+            
             self.physicsBody = SKPhysicsBody(texture: texture, size: self.size)
             self.physicsBody?.categoryBitMask = Contact.Enemy
             self.physicsBody?.collisionBitMask = 0x0 // Igore collisions
-            self.physicsBody?.contactTestBitMask = Contact.Player | Contact.Weapon //0x0 // Ignore contact
+            self.physicsBody?.contactTestBitMask = Contact.Player | Contact.Weapon
+            self.zPosition = GameLayer.Enemy
         }
     }
     
     //MARK: - Spawn
     func spawnEnemy(_ parent: EnemyController) {
-        self.behaviors.spawn(self, parent: parent)
         
-        parent.checkPhysics()
+        let enemy = self.behaviors.spawn(self)
+        parent.addChild(enemy)
+        // Start Weapons action.... 
+        
+        // Start Movement updates
+        enemy.run( SKAction.repeatForever(
+            SKAction.sequence([ SKAction.wait(forDuration: enemy.refreshRate),
+                                SKAction.run({ enemy.update(delta: enemy.refreshRate) })]
+        )))
+        
+        // Start Weapons Action
+        for weapon in enemy.behaviors.weapons {
+            enemy.run( SKAction.repeatForever(
+                SKAction.sequence([ SKAction.wait(forDuration: weapon.fireRate),
+                                    SKAction.run({ weapon.spawn(position: enemy.position, controller: parent) })]
+            )))
+        }
+        
     }
     
     // MARK: - Update
@@ -92,14 +109,18 @@ class Enemy:SKSpriteNode {
     func hit(_ hit:Int, player: Player?) {
         self.hitPoints -= hit
         if self.hitPoints <= 0 {
-            // Increase player score by enemy value
-            FloatLabel.spawn(self, value: String(self.value))
+            
             // Check and update player score
             if let p = player as Player? {
                 p.updatePlayerScore(score: self.value)
             }
-            // TODO: - Destruction Animation
+            // TODO: - Destruction Animation TODO: Refactor
             self.behaviors.destroy(self)
+            
+            // Display bonus message
+            let position = CGPoint(x: self.position.x, y: self.position.y - self.frame.size.height / 2 )
+            self.parent?.addChild(FloatLabel.spawn(position, text: String(self.value)))
+            
             self.removeFromParent()
         }
     }

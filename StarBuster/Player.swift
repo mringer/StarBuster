@@ -65,6 +65,7 @@ class Player:SKSpriteNode {
             self.physicsBody?.collisionBitMask = Contact.Scene
             self.physicsBody?.contactTestBitMask = Contact.Meteor | Contact.Bonus | Contact.Enemy
             }
+        self.zPosition = GameLayer.Player
     }
     
     fileprivate func move() {
@@ -155,9 +156,14 @@ class Player:SKSpriteNode {
         if self.highStreak > GameSettings.sharedInstance.getBestStreak() {
             GameSettings.sharedInstance.saveBestStreak(streak: self.highStreak)
         }
+        
+        self.BigBoom(radius: 50, count: 10)
+        
+        self.removeFromParent()
+        
     }
     
-    // MARK: - Pickup 
+    // MARK: - Pickup
     func checkStreak(streak:Int) {
         if streak > self.highStreak {
             self.highStreak = streak

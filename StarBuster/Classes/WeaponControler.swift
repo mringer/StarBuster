@@ -37,12 +37,6 @@ class WeaponController:SKNode {
         // Is it time to fire the guns?
         if self.firingWeapons {
             self.frameCount += delta
-            
-            if self.frameCount >= 0.5 {
-                // Approximatly 3 seconds have passed, spawn more
-                self.spawnWeapons(player: player)
-                self.frameCount = 0.0
-            }
         }
         
         //Move the meteors on screen
@@ -56,7 +50,7 @@ class WeaponController:SKNode {
     }
     
     //MARK: - Spawn Weapons
-    fileprivate func spawnWeapons(player: Player) {
+    func spawnWeapons(player: Player) {
         if self.firingWeapons {
             for ( i, _ ) in player.weapons.enumerated() {
                 // Copy from array
@@ -66,6 +60,8 @@ class WeaponController:SKNode {
                     let modOffset = CGFloat( (player.weapons.count + 1) % 2 ) * laserSpacing / 2
                     let laserXOffset = laserSpacing * CGFloat(player.weapons.count / 2) - modOffset
                     weapon.position = CGPoint(x: player.position.x + laserSpacing * CGFloat(i) - laserXOffset, y: player.position.y + weapon.size.height)
+                    
+                    
                     self.addChild(weapon)
                 }
             }

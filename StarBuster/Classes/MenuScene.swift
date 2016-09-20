@@ -20,7 +20,7 @@ class MenuScene:SKScene {
     fileprivate let playButton = PlayButton()
     
     //MARK: - Private class variable
-//    private var sceneLabel = SKLabelNode()
+    //    private var sceneLabel = SKLabelNode()
     
     //MAARK: - Init
     required init?(coder aDecoder: NSCoder) {
@@ -67,8 +67,12 @@ class MenuScene:SKScene {
     //MARK: -  Load Scene
     fileprivate func loadGameScene() {
         let gameScene = GameScene(size: kViewSize)
-        let transition = SKTransition.fade(with: SKColor.black, duration: 0.25)
-        self.view?.presentScene(gameScene, transition: transition)
+        let transition = SKTransition.push(with: SKTransitionDirection.down, duration: 0.5)
+        
+        self.gameTitleShip.run(self.gameTitleShip.animateOut(), completion: {
+            self.view?.presentScene(gameScene, transition: transition)
+        })
+        
     }
 }
 

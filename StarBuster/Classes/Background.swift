@@ -31,6 +31,7 @@ class Background:SKNode{
     // Mark: - Private functions
     fileprivate func setupBackground(){
         self.backgroundParticles = GameParticles.sharedInstnce.createParticle(particles: GameParticles.Particles.magic)
+        self.backgroundParticles.zPosition = GameLayer.BackgroundLow
         self.addChild(self.backgroundParticles)
         self.setBackgroundOn(false)
     }

@@ -16,9 +16,7 @@
 		1E0DCBA21D79536E00C15765 /* FloatLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0DCBA11D79536E00C15765 /* FloatLabel.swift */; };
 		1E0DCBA51D795CFB00C15765 /* OneUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0DCBA41D795CFB00C15765 /* OneUp.swift */; };
 		1E0DCBA91D7984B900C15765 /* EnemyWeapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0DCBA81D7984B900C15765 /* EnemyWeapon.swift */; };
-		1E0DCBAB1D7984D900C15765 /* EnemyWeaponController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0DCBAA1D7984D900C15765 /* EnemyWeaponController.swift */; };
 		1E0DCBAE1D7986DC00C15765 /* EnemyLaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0DCBAD1D7986DC00C15765 /* EnemyLaser.swift */; };
-		1E0DCBB11D7F43F600C15765 /* Laser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0DCBB01D7F43F600C15765 /* Laser.swift */; };
 		1E0F1A011D6C9153009E0ACA /* GameOverTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0F1A001D6C9153009E0ACA /* GameOverTitle.swift */; };
 		1E0F1A031D6C9415009E0ACA /* ScoreBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0F1A021D6C9415009E0ACA /* ScoreBoard.swift */; };
 		1E0F1A061D6F881E009E0ACA /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0F1A051D6F881E009E0ACA /* Weapon.swift */; };
@@ -48,7 +46,7 @@
 		1E69138A1D832C46008C78C6 /* GameAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6913891D832C46008C78C6 /* GameAudio.swift */; };
 		1E69138C1D885894008C78C6 /* PauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E69138B1D885894008C78C6 /* PauseButton.swift */; };
 		1E914ED81D903DDF001AA832 /* missile.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 1E914ED71D903DDF001AA832 /* missile.atlas */; };
-		1E914EDA1D903E6B001AA832 /* Missile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E914ED91D903E6B001AA832 /* Missile.swift */; };
+		1E914EDA1D903E6B001AA832 /* EnemyMissile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E914ED91D903E6B001AA832 /* EnemyMissile.swift */; };
 		1ED134901D4299E7002BC092 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1ED1348F1D4299E7002BC092 /* GameScene.sks */; };
 		1ED134971D4299E7002BC092 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ED134951D4299E7002BC092 /* Main.storyboard */; };
 		1ED134991D4299E7002BC092 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ED134981D4299E7002BC092 /* Assets.xcassets */; };
@@ -112,9 +110,7 @@
 		1E0DCBA11D79536E00C15765 /* FloatLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatLabel.swift; sourceTree = "<group>"; };
 		1E0DCBA41D795CFB00C15765 /* OneUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneUp.swift; sourceTree = "<group>"; };
 		1E0DCBA81D7984B900C15765 /* EnemyWeapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyWeapon.swift; sourceTree = "<group>"; };
-		1E0DCBAA1D7984D900C15765 /* EnemyWeaponController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyWeaponController.swift; sourceTree = "<group>"; };
 		1E0DCBAD1D7986DC00C15765 /* EnemyLaser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyLaser.swift; sourceTree = "<group>"; };
-		1E0DCBB01D7F43F600C15765 /* Laser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Laser.swift; sourceTree = "<group>"; };
 		1E0F1A001D6C9153009E0ACA /* GameOverTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverTitle.swift; sourceTree = "<group>"; };
 		1E0F1A021D6C9415009E0ACA /* ScoreBoard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreBoard.swift; sourceTree = "<group>"; };
 		1E0F1A051D6F881E009E0ACA /* Weapon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
@@ -144,7 +140,7 @@
 		1E6913891D832C46008C78C6 /* GameAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameAudio.swift; sourceTree = "<group>"; };
 		1E69138B1D885894008C78C6 /* PauseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseButton.swift; sourceTree = "<group>"; };
 		1E914ED71D903DDF001AA832 /* missile.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = missile.atlas; sourceTree = "<group>"; };
-		1E914ED91D903E6B001AA832 /* Missile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Missile.swift; sourceTree = "<group>"; };
+		1E914ED91D903E6B001AA832 /* EnemyMissile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyMissile.swift; sourceTree = "<group>"; };
 		1ED1348A1D4299E5002BC092 /* StarBuster.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StarBuster.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ED1348F1D4299E7002BC092 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		1ED134961D4299E7002BC092 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -218,7 +214,6 @@
 				1E0DCB931D76D54600C15765 /* Explosion.swift */,
 				1E0DCBA11D79536E00C15765 /* FloatLabel.swift */,
 				1EE56F681D89AC2100A0D4FE /* SpriteAnimation.swift */,
-				1E914ED91D903E6B001AA832 /* Missile.swift */,
 			);
 			name = Animations;
 			sourceTree = "<group>";
@@ -226,6 +221,7 @@
 		1E0DCB951D77642500C15765 /* Enemies */ = {
 			isa = PBXGroup;
 			children = (
+				1E0DCBA71D79849000C15765 /* Weapons */,
 				1E0DCB9C1D78B4AE00C15765 /* Behaviors */,
 				1E0DCB981D77647D00C15765 /* EnemyController.swift */,
 				1E0DCB9A1D7795AC00C15765 /* Enemy.swift */,
@@ -252,36 +248,19 @@
 			name = Behaviors;
 			sourceTree = "<group>";
 		};
-		1E0DCBA71D79849000C15765 /* EnemyWeapons */ = {
-			isa = PBXGroup;
-			children = (
-				1E0DCBAC1D79853200C15765 /* Behaviors */,
-				1E0DCBA81D7984B900C15765 /* EnemyWeapon.swift */,
-				1E0DCBAA1D7984D900C15765 /* EnemyWeaponController.swift */,
-			);
-			name = EnemyWeapons;
-			sourceTree = "<group>";
-		};
-		1E0DCBAC1D79853200C15765 /* Behaviors */ = {
+		1E0DCBA71D79849000C15765 /* Weapons */ = {
 			isa = PBXGroup;
 			children = (
 				1E0DCBAD1D7986DC00C15765 /* EnemyLaser.swift */,
+				1E914ED91D903E6B001AA832 /* EnemyMissile.swift */,
+				1E0DCBA81D7984B900C15765 /* EnemyWeapon.swift */,
 			);
-			name = Behaviors;
-			sourceTree = "<group>";
-		};
-		1E0DCBAF1D7F43E000C15765 /* Behaviors */ = {
-			isa = PBXGroup;
-			children = (
-				1E0DCBB01D7F43F600C15765 /* Laser.swift */,
-			);
-			name = Behaviors;
+			name = Weapons;
 			sourceTree = "<group>";
 		};
 		1E0F1A041D6F87F6009E0ACA /* Weapons */ = {
 			isa = PBXGroup;
 			children = (
-				1E0DCBAF1D7F43E000C15765 /* Behaviors */,
 				1E0F1A051D6F881E009E0ACA /* Weapon.swift */,
 				1E0F1A071D6F882D009E0ACA /* WeaponControler.swift */,
 			);
@@ -426,7 +405,6 @@
 		1EF547241D42BF6F007C9060 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1E0DCBA71D79849000C15765 /* EnemyWeapons */,
 				1E0DCB951D77642500C15765 /* Enemies */,
 				1E0DCB921D76D4F800C15765 /* Animations */,
 				1E0F1A041D6F87F6009E0ACA /* Weapons */,
@@ -709,10 +687,9 @@
 				1E38F83E1D511D1B00AEDA14 /* GameTextures.swift in Sources */,
 				1E38F8721D58DAEB00AEDA14 /* Player.swift in Sources */,
 				1EF547481D42BFCC007C9060 /* SKAction+Extensions.swift in Sources */,
-				1E0DCBAB1D7984D900C15765 /* EnemyWeaponController.swift in Sources */,
 				1E6913861D82039A008C78C6 /* GameTitlePlanet.swift in Sources */,
 				1E38F8831D61122600AEDA14 /* BonusController.swift in Sources */,
-				1E914EDA1D903E6B001AA832 /* Missile.swift in Sources */,
+				1E914EDA1D903E6B001AA832 /* EnemyMissile.swift in Sources */,
 				1EF5474E1D42BFCC007C9060 /* Vector3.swift in Sources */,
 				1E0DCB9B1D7795AC00C15765 /* Enemy.swift in Sources */,
 				1E0F1A011D6C9153009E0ACA /* GameOverTitle.swift in Sources */,
@@ -741,7 +718,6 @@
 				1E0F1A031D6C9415009E0ACA /* ScoreBoard.swift in Sources */,
 				1E38F86B1D58441A00AEDA14 /* GameTitle.swift in Sources */,
 				1E0DCBA21D79536E00C15765 /* FloatLabel.swift in Sources */,
-				1E0DCBB11D7F43F600C15765 /* Laser.swift in Sources */,
 				1EF5474B1D42BFCC007C9060 /* SKNode+Extensions.swift in Sources */,
 				1EF5475B1D42DF07007C9060 /* MenuScene.swift in Sources */,
 				1EF547441D42BFCC007C9060 /* CGFloat+Extensions.swift in Sources */,
@@ -888,7 +864,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = StarBuster/Info.plist;
@@ -904,7 +880,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = StarBuster/Info.plist;
