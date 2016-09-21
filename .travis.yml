@@ -5,4 +5,4 @@ xcode_scheme: StarBuster
 xcode_sdk: iphonesimulator10.0
 
 script:
-- xcodebuild build -scheme StarBuster -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.0'
+- xcodebuild test -scheme StarBuster -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.0'

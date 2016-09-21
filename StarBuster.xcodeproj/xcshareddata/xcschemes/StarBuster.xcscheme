@@ -42,8 +42,8 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1ED134AC1D4299E7002BC092"
-               BuildableName = "StarBuster.xctest"
+               BlueprintIdentifier = "1EE02CF11D92C65E00728724"
+               BuildableName = "StarBusterUITests.xctest"
                BlueprintName = "StarBusterUITests"
                ReferencedContainer = "container:StarBuster.xcodeproj">
             </BuildableReference>
