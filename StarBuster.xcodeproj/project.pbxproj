@@ -954,7 +954,7 @@
 				1ED134B51D4299E7002BC092 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		1ED134B61D4299E7002BC092 /* Build configuration list for PBXNativeTarget "StarBuster" */ = {
 			isa = XCConfigurationList;
@@ -963,7 +963,7 @@
 				1ED134B81D4299E7002BC092 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		1ED134B91D4299E7002BC092 /* Build configuration list for PBXNativeTarget "StarBusterTests" */ = {
 			isa = XCConfigurationList;
@@ -972,7 +972,7 @@
 				1ED134BB1D4299E7002BC092 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		1ED134BC1D4299E7002BC092 /* Build configuration list for PBXNativeTarget "StarBusterUITests" */ = {
 			isa = XCConfigurationList;
@@ -981,7 +981,7 @@
 				1ED134BE1D4299E7002BC092 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
