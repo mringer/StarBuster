@@ -51,7 +51,7 @@
 		1ED134971D4299E7002BC092 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1ED134951D4299E7002BC092 /* Main.storyboard */; };
 		1ED134991D4299E7002BC092 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1ED134981D4299E7002BC092 /* Assets.xcassets */; };
 		1ED134A71D4299E7002BC092 /* StarBusterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED134A61D4299E7002BC092 /* StarBusterTests.swift */; };
-		1ED134B21D4299E7002BC092 /* StarBusterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED134B11D4299E7002BC092 /* StarBusterUITests.swift */; };
+		1EE02CF51D92C65E00728724 /* StarBusterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE02CF41D92C65E00728724 /* StarBusterUITests.swift */; };
 		1EE56F691D89AC2100A0D4FE /* SpriteAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE56F681D89AC2100A0D4FE /* SpriteAnimation.swift */; };
 		1EE56F7F1D8DB9AF00A0D4FE /* GameMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE56F7E1D8DB9AF00A0D4FE /* GameMenu.swift */; };
 		1EE56F811D8DBE2500A0D4FE /* GameMenuActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE56F801D8DBE2500A0D4FE /* GameMenuActions.swift */; };
@@ -91,12 +91,12 @@
 			remoteGlobalIDString = 1ED134891D4299E5002BC092;
 			remoteInfo = SpaceRunner;
 		};
-		1ED134AE1D4299E7002BC092 /* PBXContainerItemProxy */ = {
+		1EE02CF71D92C65E00728724 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 1ED134821D4299E5002BC092 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 1ED134891D4299E5002BC092;
-			remoteInfo = SpaceRunner;
+			remoteInfo = StarBuster;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -149,9 +149,11 @@
 		1ED134A21D4299E7002BC092 /* StarBusterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarBusterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ED134A61D4299E7002BC092 /* StarBusterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarBusterTests.swift; sourceTree = "<group>"; };
 		1ED134A81D4299E7002BC092 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1ED134AD1D4299E7002BC092 /* StarBuster.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarBuster.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ED134B11D4299E7002BC092 /* StarBusterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarBusterUITests.swift; sourceTree = "<group>"; };
 		1ED134B31D4299E7002BC092 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1EE02CF21D92C65E00728724 /* StarBusterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StarBusterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EE02CF41D92C65E00728724 /* StarBusterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarBusterUITests.swift; sourceTree = "<group>"; };
+		1EE02CF61D92C65E00728724 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1EE56F681D89AC2100A0D4FE /* SpriteAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteAnimation.swift; sourceTree = "<group>"; };
 		1EE56F7E1D8DB9AF00A0D4FE /* GameMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMenu.swift; sourceTree = "<group>"; };
 		1EE56F801D8DBE2500A0D4FE /* GameMenuActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMenuActions.swift; sourceTree = "<group>"; };
@@ -198,7 +200,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1ED134AA1D4299E7002BC092 /* Frameworks */ = {
+		1EE02CEF1D92C65E00728724 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -356,6 +358,7 @@
 				1ED1348C1D4299E7002BC092 /* StarBuster */,
 				1ED134A51D4299E7002BC092 /* StarBusterTests */,
 				1ED134B01D4299E7002BC092 /* StarBusterUITests */,
+				1EE02CF31D92C65E00728724 /* StarBusterUITests */,
 				1ED1348B1D4299E5002BC092 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -365,7 +368,7 @@
 			children = (
 				1ED1348A1D4299E5002BC092 /* StarBuster.app */,
 				1ED134A21D4299E7002BC092 /* StarBusterTests.xctest */,
-				1ED134AD1D4299E7002BC092 /* StarBuster.xctest */,
+				1EE02CF21D92C65E00728724 /* StarBusterUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -398,6 +401,15 @@
 			children = (
 				1ED134B11D4299E7002BC092 /* StarBusterUITests.swift */,
 				1ED134B31D4299E7002BC092 /* Info.plist */,
+			);
+			path = StarBusterUITests;
+			sourceTree = "<group>";
+		};
+		1EE02CF31D92C65E00728724 /* StarBusterUITests */ = {
+			isa = PBXGroup;
+			children = (
+				1EE02CF41D92C65E00728724 /* StarBusterUITests.swift */,
+				1EE02CF61D92C65E00728724 /* Info.plist */,
 			);
 			path = StarBusterUITests;
 			sourceTree = "<group>";
@@ -558,22 +570,22 @@
 			productReference = 1ED134A21D4299E7002BC092 /* StarBusterTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		1ED134AC1D4299E7002BC092 /* StarBusterUITests */ = {
+		1EE02CF11D92C65E00728724 /* StarBusterUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1ED134BC1D4299E7002BC092 /* Build configuration list for PBXNativeTarget "StarBusterUITests" */;
+			buildConfigurationList = 1EE02CF91D92C65E00728724 /* Build configuration list for PBXNativeTarget "StarBusterUITests" */;
 			buildPhases = (
-				1ED134A91D4299E7002BC092 /* Sources */,
-				1ED134AA1D4299E7002BC092 /* Frameworks */,
-				1ED134AB1D4299E7002BC092 /* Resources */,
+				1EE02CEE1D92C65E00728724 /* Sources */,
+				1EE02CEF1D92C65E00728724 /* Frameworks */,
+				1EE02CF01D92C65E00728724 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				1ED134AF1D4299E7002BC092 /* PBXTargetDependency */,
+				1EE02CF81D92C65E00728724 /* PBXTargetDependency */,
 			);
 			name = StarBusterUITests;
-			productName = SpaceRunnerUITests;
-			productReference = 1ED134AD1D4299E7002BC092 /* StarBuster.xctest */;
+			productName = StarBusterUITests;
+			productReference = 1EE02CF21D92C65E00728724 /* StarBusterUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -582,7 +594,7 @@
 		1ED134821D4299E5002BC092 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0800;
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Matthew Ringer";
 				TargetAttributes = {
@@ -596,9 +608,10 @@
 						LastSwiftMigration = 0800;
 						TestTargetID = 1ED134891D4299E5002BC092;
 					};
-					1ED134AC1D4299E7002BC092 = {
-						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0800;
+					1EE02CF11D92C65E00728724 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = JHM82TJNPP;
+						ProvisioningStyle = Automatic;
 						TestTargetID = 1ED134891D4299E5002BC092;
 					};
 				};
@@ -618,7 +631,7 @@
 			targets = (
 				1ED134891D4299E5002BC092 /* StarBuster */,
 				1ED134A11D4299E7002BC092 /* StarBusterTests */,
-				1ED134AC1D4299E7002BC092 /* StarBusterUITests */,
+				1EE02CF11D92C65E00728724 /* StarBusterUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -651,7 +664,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1ED134AB1D4299E7002BC092 /* Resources */ = {
+		1EE02CF01D92C65E00728724 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -735,11 +748,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1ED134A91D4299E7002BC092 /* Sources */ = {
+		1EE02CEE1D92C65E00728724 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1ED134B21D4299E7002BC092 /* StarBusterUITests.swift in Sources */,
+				1EE02CF51D92C65E00728724 /* StarBusterUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,10 +764,10 @@
 			target = 1ED134891D4299E5002BC092 /* StarBuster */;
 			targetProxy = 1ED134A31D4299E7002BC092 /* PBXContainerItemProxy */;
 		};
-		1ED134AF1D4299E7002BC092 /* PBXTargetDependency */ = {
+		1EE02CF81D92C65E00728724 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 1ED134891D4299E5002BC092 /* StarBuster */;
-			targetProxy = 1ED134AE1D4299E7002BC092 /* PBXContainerItemProxy */;
+			targetProxy = 1EE02CF71D92C65E00728724 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -919,28 +932,35 @@
 			};
 			name = Release;
 		};
-		1ED134BD1D4299E7002BC092 /* Debug */ = {
+		1EE02CFA1D92C65E00728724 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = JHM82TJNPP;
 				INFOPLIST_FILE = StarBusterUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewringer.SpaceRunnerUITests;
-				PRODUCT_NAME = StarBuster;
+				PRODUCT_BUNDLE_IDENTIFIER = matthewringer.StarBusterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = SpaceRunner;
+				TEST_TARGET_NAME = StarBuster;
 			};
 			name = Debug;
 		};
-		1ED134BE1D4299E7002BC092 /* Release */ = {
+		1EE02CFB1D92C65E00728724 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = JHM82TJNPP;
 				INFOPLIST_FILE = StarBusterUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.matthewringer.SpaceRunnerUITests;
-				PRODUCT_NAME = StarBuster;
+				PRODUCT_BUNDLE_IDENTIFIER = matthewringer.StarBusterUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = SpaceRunner;
+				TEST_TARGET_NAME = StarBuster;
 			};
 			name = Release;
 		};
@@ -954,7 +974,7 @@
 				1ED134B51D4299E7002BC092 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		1ED134B61D4299E7002BC092 /* Build configuration list for PBXNativeTarget "StarBuster" */ = {
 			isa = XCConfigurationList;
@@ -963,7 +983,7 @@
 				1ED134B81D4299E7002BC092 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		1ED134B91D4299E7002BC092 /* Build configuration list for PBXNativeTarget "StarBusterTests" */ = {
 			isa = XCConfigurationList;
@@ -972,16 +992,15 @@
 				1ED134BB1D4299E7002BC092 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
-		1ED134BC1D4299E7002BC092 /* Build configuration list for PBXNativeTarget "StarBusterUITests" */ = {
+		1EE02CF91D92C65E00728724 /* Build configuration list for PBXNativeTarget "StarBusterUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1ED134BD1D4299E7002BC092 /* Debug */,
-				1ED134BE1D4299E7002BC092 /* Release */,
+				1EE02CFA1D92C65E00728724 /* Debug */,
+				1EE02CFB1D92C65E00728724 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
